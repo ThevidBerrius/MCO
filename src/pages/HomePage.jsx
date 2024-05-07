@@ -22,10 +22,10 @@ const HomePage = () => {
         <Container>
           <Row className="header-box d-flex align-items-center pt-lg-5">
             <Col lg="6">
-              <h1 className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">Temukan <br /> <span>Bakat Kreatifmu</span> <br />Bersama Kami</h1>
-              <p className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis inventore odit doloremque suscipit expedita consequatur.</p>
-              <button className="btn btn-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/kelas")}>Lihat Kelas</button>
-              <button className="btn btn-outline-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s">Lihat Promo</button>
+              <h1 className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">Temukan <br /> <span>Bakat Bermainmu</span> <br />Bersama Kami</h1>
+              <p className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">Maksimalkan Potensimu, Raih Kemenanganmu: Temukan Pelatih, Teman Bermain, dan Info Event Terkini dengan MCO</p>
+              <button className="btn btn-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/kelas")}>Cari Teman Mabar</button>
+              <button className="btn btn-outline-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/testimonial")}>Cari Coach</button>
             </Col>
             <Col lg="6" className="pt-lg-0 pt-5">
               <img src={HeroImage} alt="hero-img" className="animate__animated animate__fadeInUp"/>
@@ -37,7 +37,7 @@ const HomePage = () => {
         <Container>
           <Row>
             <Col>
-              <h1 className="text-center fw-bold">Kelas Terbaru</h1>
+              <h1 className="text-center fw-bold">Pilih Game</h1>
               <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </Col>
           </Row>
@@ -46,16 +46,8 @@ const HomePage = () => {
               return(
                 <Col key={kelas.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={kelas.delay}>
                   <img src={kelas.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
-                  <div className="star mb-2 px-3">
-                    <i className={kelas.star1}></i>
-                    <i className={kelas.star2}></i>
-                    <i className={kelas.star3}></i>
-                    <i className={kelas.star4}></i>
-                    <i className={kelas.star5}></i>
-                  </div>
                   <h5 className="mb-5 px-3">{kelas.title}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <p className="m-0 text-primary fw-bold">{kelas.price}</p>
                     <button className="btn btn-danger rounded-1">{kelas.buy}</button>
                   </div>
                 </Col>
@@ -109,7 +101,7 @@ const HomePage = () => {
                   <SwiperSlide key={data.id} className="shadow-sm">
                     <p className="desc">{data.desc}</p>
                     <div className="people">
-                      <img src={data.image} alt="" />
+                      <img src={data.image} alt=""/>
                       <div>
                         <h5 className="mb-1">{data.name}</h5>
                         <p className="m-0 fw-bold">{data.skill}</p>
@@ -124,7 +116,6 @@ const HomePage = () => {
       </div>
       {/* Section FAQ */}
       <Faq/>
-      {/* Section FAQ */}
     </div>
   )
 }
