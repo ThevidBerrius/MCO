@@ -38,12 +38,22 @@ export const navLinks = [
     path: "syaratketen",
     text: "Syarat & Ketentuan",
   },
+  {
+    id: 6,
+    path: "event",
+    text: "Event",
+  },
 ];
 
 export const semuaKelas = [
   {
     id: 1,
     image: KelasImage1,
+    star1: "fa-solid fa-star",
+    star2: "fa-solid fa-star",
+    star3: "fa-solid fa-star",
+    star4: "fa-solid fa-star",
+    star5: "fa-solid fa-star",
     title: "Character Illustration with Adobe Illustrator",
     price: "Rp. 300.000",
     buy: "Beli Kelas",
