@@ -3,7 +3,7 @@ import {semuaKelas} from "../data/index"
 
 import Faq from "../components/Faq"
 
-const KelasPage = () => {
+const TemanMabarPage = () => {
   return (
     <div className="kelas-page">
       <div className="kelas min-vh-100">
@@ -42,4 +42,4 @@ const KelasPage = () => {
   )
 }
 
-export default KelasPage
+export default TemanMabarPage

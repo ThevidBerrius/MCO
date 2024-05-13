@@ -4,11 +4,12 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
 import HomePage from './pages/HomePage'
-import KelasPage from './pages/KelasPage'
+import TemanMabarPage from './pages/TemanMabarPage'
 import TestimonialPage from './pages/TestimonialPage'
 import SyaratKetenPage from './pages/SyaratKetenPage'
 import FaqPage from './pages/FaqPage'
 import EventPage from './pages/EventPage'
+import CoachPage from './pages/CoachPage'
 
 
 export default function App() {
@@ -17,7 +18,8 @@ export default function App() {
       <NavBar />
        <Routes>
           <Route path='/' Component={HomePage}/>
-          <Route path='/kelas' Component={KelasPage}/>
+          <Route path='/temanmabar' Component={TemanMabarPage}/>
+          <Route path='/coach' Component={CoachPage}/>
           <Route path='/testimonial' Component={TestimonialPage}/>
           <Route path='/faq' Component={FaqPage}/>
           <Route path='/syaratketen' Component={SyaratKetenPage}/>

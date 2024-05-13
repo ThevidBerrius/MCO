@@ -20,17 +20,17 @@ export const navLinks = [
   },
   {
     id: 2,
-    path: "kelas",
+    path: "temanmabar",
     text: "Teman Mabar",
   },
   {
     id: 3,
-    path: "testimonial",
+    path: "coach",
     text: "Coach",
   },
   {
     id: 4,
-    path: "faq",
+    path: "testimonial",
     text: "Testimonial",
   },
   {
