@@ -1,5 +1,5 @@
 import {Container, Row, Col} from "react-bootstrap"
-import {semuaKelas} from "../data/index"
+import {temanMabarData} from "../data/index"
 
 import Faq from "../components/Faq"
 
@@ -15,21 +15,21 @@ const TemanMabarPage = () => {
             </Col>
           </Row>
           <Row>
-            {semuaKelas.map((kelas) => {
+            {temanMabarData.map((temanMabar) => {
                 return(
-                  <Col key={kelas.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={kelas.delay}>
-                    <img src={kelas.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <Col key={temanMabar.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={temanMabar.delay}>
+                    <img src={temanMabar.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
                     <div className="star mb-2 px-3">
-                      <i className={kelas.star1}></i>
-                      <i className={kelas.star2}></i>
-                      <i className={kelas.star3}></i>
-                      <i className={kelas.star4}></i>
-                      <i className={kelas.star5}></i>
+                      <i className={temanMabar.star1}></i>
+                      <i className={temanMabar.star2}></i>
+                      <i className={temanMabar.star3}></i>
+                      <i className={temanMabar.star4}></i>
+                      <i className={temanMabar.star5}></i>
                     </div>
-                    <h5 className="mb-5 px-3">{kelas.title}</h5>
+                    <h5 className="mb-5 px-3">{temanMabar.title}</h5>
                     <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                      <p className="m-0 text-primary fw-bold">{kelas.price}</p>
-                      <button className="btn btn-danger rounded-1">{kelas.buy}</button>
+                      <p className="m-0 text-primary fw-bold">{temanMabar.price}</p>
+                      <button className="btn btn-danger rounded-1">{temanMabar.buy}</button>
                     </div>
                   </Col>
                 );

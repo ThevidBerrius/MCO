@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { dataEvent } from "../data/index"
+import Faq from "../components/Faq"
 
 const EventPage = () => {
   return (
@@ -26,6 +27,9 @@ const EventPage = () => {
             })}
           </Row>
         </Container>
+      </div>
+      <div>
+        <Faq />
       </div>
     </div>
   )

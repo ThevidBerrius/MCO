@@ -1,7 +1,7 @@
 import {Container, Row, Col} from "react-bootstrap";
 import HeroImage from '../assets/img/hero.png'
 
-import {kelasTerbaru, dataSwiper} from "../data/index"
+import {GameTerbaru, dataSwiper} from "../data/index"
 import {useNavigate} from "react-router-dom"
 import Faq from "../components/Faq";
 
@@ -24,8 +24,8 @@ const HomePage = () => {
             <Col lg="6">
               <h1 className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">Temukan <br /> <span>Bakat Bermainmu</span> <br />Bersama Kami</h1>
               <p className="mb-4 animate__animated animate__fadeInUp animate__delay-1s">Maksimalkan Potensimu, Raih Kemenanganmu: Temukan Pelatih, Teman Bermain, dan Info Event Terkini dengan MCO</p>
-              <button className="btn btn-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/kelas")}>Cari Teman Mabar</button>
-              <button className="btn btn-outline-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/testimonial")}>Cari Coach</button>
+              <button className="btn btn-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/temanmabar")}>Cari Teman Mabar</button>
+              <button className="btn btn-outline-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/coach")}>Cari Coach</button>
             </Col>
             <Col lg="6" className="pt-lg-0 pt-5">
               <img src={HeroImage} alt="hero-img" className="animate__animated animate__fadeInUp"/>
@@ -42,13 +42,13 @@ const HomePage = () => {
             </Col>
           </Row>
           <Row>
-            {kelasTerbaru.map((kelas) => {
+            {GameTerbaru.map((game) => {
               return(
-                <Col key={kelas.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={kelas.delay}>
-                  <img src={kelas.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
-                  <h5 className="mb-5 px-3">{kelas.title}</h5>
+                <Col key={game.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={game.delay}>
+                  <img src={game.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <h5 className="mb-5 px-3">{game.title}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <button className="btn btn-danger rounded-1">{kelas.buy}</button>
+                    <button className="btn btn-danger rounded-1">{game.buy}</button>
                   </div>
                 </Col>
               )
@@ -56,7 +56,7 @@ const HomePage = () => {
           </Row>
           <Row>
             <Col className="text-center">
-              <button className="btn btn-success rounded-5 btn-lg" data-aos="fade-up" data-aos-duration="1000" onClick={() => navigate("/kelas")}>Lihat Semua Kelas  <i className="fa-solid fa-chevron-right ms-1"></i> </button>
+              <button className="btn btn-success rounded-5 btn-lg" data-aos="fade-up" data-aos-duration="1000" onClick={() => navigate("/kelas")}>Lihat Semua Game  <i className="fa-solid fa-chevron-right ms-1"></i> </button>
             </Col>
           </Row>
         </Container>
