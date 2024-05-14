@@ -252,7 +252,7 @@ export const coachData = [
     star3: "fa-solid fa-star",
     star4: "fa-solid fa-star",
     star5: "fa-solid fa-star-half-stroke",
-    title: "AceAdvise",
+    title: "Coach AceAdvise",
     price: "Rp. 340.000",
     buy: "Order",
     delay: "",

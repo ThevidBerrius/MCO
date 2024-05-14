@@ -506,3 +506,35 @@ header {
   font-weight: bold;
   line-height: 1.5;
 }
+
+/* Detail Page */
+.detail-page .detail {
+  padding-top: 150px;
+  background-color: var(--primary-color);
+}
+
+.detail-page .detail p{
+  color: var(--color-text);
+  line-height: 2;
+}
+
+.detail-page .detail img{
+  width: 100%;
+  max-width: 600px;
+}
+
+.detail-page .detail h1{
+  color: var(--color-text);
+  --animate-delay:0.5s
+}
+
+.detail-page .detail .row:nth-child(2) i{
+  color: gold;
+}
+
+
+@media screen and (max-width: 768px){
+  .detail-page .detail img{
+    width: 300px;
+  }
+}

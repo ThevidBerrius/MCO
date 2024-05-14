@@ -10,6 +10,7 @@ import SyaratKetenPage from './pages/SyaratKetenPage'
 import FaqPage from './pages/FaqPage'
 import EventPage from './pages/EventPage'
 import CoachPage from './pages/CoachPage'
+import DetailPage from './pages/DetailPage'
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path='/faq' Component={FaqPage}/>
           <Route path='/syaratketen' Component={SyaratKetenPage}/>
           <Route path='/event' Component={EventPage}/>
+          <Route path='/detail' Component={DetailPage}/>     
        </Routes>
       <Footer />
     </div>
