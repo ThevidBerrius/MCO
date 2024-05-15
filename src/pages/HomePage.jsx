@@ -48,7 +48,7 @@ const HomePage = () => {
                   <img src={game.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
                   <h5 className="mb-5 px-3">{game.title}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <button className="btn btn-danger rounded-1">{game.buy}</button>
+                    <button className="btn btn-danger rounded-1" onClick={() => navigate("/temanmabar")}>{game.buy}</button>
                   </div>
                 </Col>
               )

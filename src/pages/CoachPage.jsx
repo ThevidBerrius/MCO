@@ -1,6 +1,7 @@
 import {Container, Row, Col} from "react-bootstrap"
 import {coachData} from "../data/index"
 
+
 import Faq from "../components/Faq"
 
 const CoachPage = () => {

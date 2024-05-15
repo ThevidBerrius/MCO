@@ -35,13 +35,13 @@ export const navLinks = [
   },
   {
     id: 5,
-    path: "syaratketen",
-    text: "Syarat & Ketentuan",
+    path: "event",
+    text: "Event",
   },
   {
     id: 6,
-    path: "event",
-    text: "Event",
+    path: "syaratketen",
+    text: "Syarat & Ketentuan",
   },
 ];
 
@@ -445,32 +445,32 @@ export const faq = [
   {
     id: 1,
     eventKey: 0,
-    title: "Apakah ini Berlangganan?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Apa Tujuan Dari Aplikasi Ini?",
+    desc: "Aplikasi ini adalah platform yang memungkinkan pengguna untuk menyewa pelatih (coach) dan pemain (player) profesional untuk bermain bersama dalam berbagai game. Pengguna dapat memilih coach atau player berdasarkan keterampilan, rating, dan ketersediaan mereka.",
   },
   {
     id: 2,
     eventKey: 1,
-    title: "Bagaimana Sistem Belajarnya?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Apakah saya perlu membayar untuk menggunakan aplikasi ini?",
+    desc: "Ya, menyewa coach atau player dikenakan biaya. Tarif bervariasi tergantung pada pengalaman dan reputasi coach atau player yang dipilih. Beberapa fitur dasar aplikasi mungkin gratis, tetapi menyewa jasa profesional memerlukan pembayaran.",
   },
   {
     id: 3,
     eventKey: 2,
-    title: "Apakah Boleh di Share ke Orang Lain?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Apa itu fitur event page dalam aplikasi ini?",
+    desc: "Fitur event page menyediakan informasi tentang event-event terkini yang berkaitan dengan dunia gaming, seperti turnamen, kompetisi, workshop, dan acara komunitas. Pengguna dapat mendaftar dan berpartisipasi dalam event ini langsung melalui aplikasi.",
   },
   {
     id: 4,
     eventKey: 3,
-    title: "Apakah Ada Grup Diskusi?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Bagaimana cara menghubungi dukungan pelanggan jika saya mengalami masalah?",
+    desc: "Pengguna dapat menghubungi kontak yang tertera pada bagian paling bawah website. Terdapat opsi untuk mengirim pesan, email, atau menghubungi nomor dukungan yang tersedia. Tim dukungan akan membantu menyelesaikan masalah atau menjawab pertanyaan yang Anda miliki.",
   },
   {
     id: 5,
     eventKey: 4,
-    title: "Apakah dapat di Akses Selamanya?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Bagaimana keamanan dan privasi data pengguna dijamin?",
+    desc: "Aplikasi ini menggunakan enkripsi data dan langkah-langkah keamanan lainnya untuk melindungi informasi pribadi dan pembayaran pengguna. Kebijakan privasi lengkap dapat dibaca di bagian pengaturan aplikasi.",
   },
   {
     id: 6,
@@ -481,14 +481,14 @@ export const faq = [
   {
     id: 7,
     eventKey: 6,
-    title: "Apakah Saya Boleh Mendownload Videonya?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Apa yang harus saya lakukan jika coach atau player tidak muncul atau membatalkan sesi?",
+    desc: "Jika coach atau player tidak muncul atau membatalkan sesi, Anda dapat melaporkan kejadian tersebut melalui kontak yang tertera pada bagian bawah website. Tim dukungan pelanggan akan membantu menyelesaikan masalah dan, jika perlu, mengatur pengembalian dana.",
   },
   {
     id: 8,
     eventKey: 7,
-    title: "Apakah boleh ganti Kelas ketika sudah Membeli?",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id estlaborum.",
+    title: "Apakah ada batasan usia untuk menggunakan aplikasi ini?",
+    desc: "Ya, pengguna harus berusia minimal 18 tahun untuk mendaftar dan menggunakan aplikasi ini, sesuai dengan syarat dan ketentuan layanan.",
   },
 ];
 

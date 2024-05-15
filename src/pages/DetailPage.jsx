@@ -21,7 +21,7 @@ const DetailPage = () => {
             <Col  md={6} className="pt-5 order-md-2 order-2">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio eos non enim libero sed sequi sapiente, porro adipisci beatae at explicabo alias voluptatum doloribus voluptate eius ex saepe fugiat vero tempora voluptates exercitationem mollitia consequuntur pariatur nobis. Dignissimos, libero quam consectetur doloribus dolorem sit! Voluptates est nobis commodi? Unde, pariatur?</p>
 
-              <h4 className="pt-5">Rating:</h4>
+              <h4 className="pt-3">Rating:</h4>
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
@@ -29,8 +29,11 @@ const DetailPage = () => {
               <i className="fa-solid fa-star"></i>
               <br />
 
-              <h4 className="pt-5">Game Coached:</h4>
+              <h4 className="pt-3">Game Coached:</h4>
               <p>Mobile Legend: Bang-Bang, League of Legends</p>
+
+              <h4 className="pt-3">Price:</h4>
+              <p className="m-0 text-primary fw-bold">Rp. 420.000</p>
 
               <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => Navigate("/")}>Order Coach</button>
             </Col>
