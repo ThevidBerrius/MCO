@@ -11,7 +11,7 @@ import FaqPage from './pages/FaqPage'
 import EventPage from './pages/EventPage'
 import CoachPage from './pages/CoachPage'
 import DetailPage from './pages/DetailPage'
-
+import LoginPage from './pages/LoginPage'
 
 export default function App() {
   return (
@@ -26,6 +26,7 @@ export default function App() {
           <Route path='/syaratketen' Component={SyaratKetenPage}/>
           <Route path='/event' Component={EventPage}/>
           <Route path='/detail' Component={DetailPage}/>     
+          <Route path='/login' Component={LoginPage}/>     
        </Routes>
       <Footer />
     </div>

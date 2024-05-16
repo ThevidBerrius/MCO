@@ -538,3 +538,222 @@ header {
     width: 300px;
   }
 }
+
+/* Login Style */
+.login-page{
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding-bottom: 150px;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.01vw var(--secondary-color);
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  padding: 25px;
+}
+
+
+.login-field{
+  position: relative;
+  width: 500px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-field input{
+  height: 50px;
+  width: 25vw;
+  font-size: 1.2vw;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: solid 0.1vw var(--secondary-color);
+  background-color: transparent;
+}
+
+.login-input:focus{
+  outline: none !important;
+  border-bottom: solid 0.1vw var(--secondary-color);
+}
+
+.login-input::placeholder{
+  color: var(--color-text);
+}
+
+.login-icons{
+  width: 1vw;
+  right: 0 ;
+}
+
+.containers{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.login-remember{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.login-forgot-password p{
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+.login-forgot-password p:hover{
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.login-submit{
+  margin: 2vw;
+}
+
+.spinner {
+  width: 70.4px;
+  height: 70.4px;
+  --clr: rgb(152, 33, 176);
+  --clr-alpha: rgba(104, 60, 132, 0.1);
+  animation: spinner 1.6s infinite ease;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 50;
+  left: 50;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.spinner > div {
+  background-color: var(--clr-alpha);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border: 3.5px solid var(--clr);
+}
+
+.spinner div:nth-of-type(1) {
+  transform: translateZ(-35.2px) rotateY(180deg);
+}
+
+.spinner div:nth-of-type(2) {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+}
+
+.spinner div:nth-of-type(3) {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+}
+
+.spinner div:nth-of-type(4) {
+  transform: rotateX(90deg) translateY(-50%);
+  transform-origin: top center;
+}
+
+.spinner div:nth-of-type(5) {
+  transform: rotateX(-90deg) translateY(50%);
+  transform-origin: bottom center;
+}
+
+.spinner div:nth-of-type(6) {
+  transform: translateZ(35.2px);
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+  }
+
+  50% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+  }
+
+  100% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+  }
+}
+
+/*CHECKBOX*/
+.check {
+  cursor: pointer;
+  position: relative;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+
+.check:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34,50,84,0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.check svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #c8ccd4;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+
+.check svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+
+.check svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+
+.check:hover:before {
+  opacity: 1;
+}
+
+.check:hover svg {
+  stroke: #006fa2;
+}
+
+#cbx:checked + .check svg {
+  stroke: #006fa2;
+}
+
+#cbx:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+
+#cbx:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
+
+
+
+
