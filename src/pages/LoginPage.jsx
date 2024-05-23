@@ -37,6 +37,9 @@ const LoginPage = () => {
                 <div className="login-submit">
                     <button type="submit" className="btn btn-danger btn-lg rounded-1"><b>Submit</b></button>
                 </div>
+                <div className="login-create-account">
+                    <p>Dont have account?</p>
+                </div>
             </form>
         </div>
   )

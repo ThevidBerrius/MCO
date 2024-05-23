@@ -617,6 +617,15 @@ header {
   cursor: pointer;
 }
 
+.login-create-account p{
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+.login-create-account p:hover{
+  color: var(--color-text);
+  cursor: pointer;
+}
 .login-submit{
   margin: 2vw;
 }
@@ -754,6 +763,89 @@ header {
   transition-delay: 0.15s;
 }
 
+@media (max-width: 1200px) {
+  .login-field {
+    width: 400px;
+    margin: 40px;
+  }
+  
+  .login-field input {
+    width: 40vw;
+    font-size: 1.5vw;
+  }
+
+  .login-icons {
+    width: 2vw;
+  }
+
+  .containers {
+    width: 90%;
+  }
+
+  .login-submit {
+    margin: 3vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-field {
+    width: 300px;
+    margin: 30px;
+  }
+  
+  .login-field input {
+    width: 60vw;
+    font-size: 2vw;
+  }
+
+  .login-icons {
+    width: 3vw;
+  }
+
+  .containers {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-submit {
+    margin: 4vw;
+  }
+
+  .login-remember, .login-forgot-password {
+    margin-bottom: 1vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-field {
+    width: 200px;
+    margin: 20px;
+  }
+  
+  .login-field input {
+    width: 80vw;
+    font-size: 3vw;
+  }
+
+  .login-icons {
+    width: 4vw;
+  }
+
+  .containers {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-submit {
+    margin: 5vw;
+  }
+
+  .login-remember, .login-forgot-password {
+    margin-bottom: 2vw;
+  }
+}
 
 
 
