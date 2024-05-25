@@ -1,5 +1,5 @@
-import {Container, Row, Col} from "react-bootstrap"
-import Faq from "../components/Faq"
+import { Container, Row, Col } from "react-bootstrap";
+import Faq from "../components/Faq";
 
 const SyaratKetenPage = () => {
   return (
@@ -8,43 +8,104 @@ const SyaratKetenPage = () => {
         <Container>
           <Row>
             <Col>
-              <h1 className="fw-bold text-center mb-2 animate__animated animate__fadeInUp animate__delay-1s">Syarat & Ketentuan</h1>
-              <p className="text-center animate__animated animate__fadeInUp animate__delay-1s">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              <h1 className="fw-bold text-center mb-2 animate__animated animate__fadeInUp animate__delay-1s">
+                Syarat & Ketentuan
+              </h1>
+              <p className="text-center animate__animated animate__fadeInUp animate__delay-1s">
+                Syarat dan ketentuan berikut mengatur penggunaan layanan
+                penyewaan coach dan teman mabar online.
+              </p>
             </Col>
           </Row>
           <Row>
             <Col className="pt-5">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et amet dolore cum. Debitis, quia illum dolore, dicta sit magnam quasi aliquam repellendus fuga delectus dolorum ratione consequuntur mollitia fugit corrupti vitae asperiores! Asperiores quas sunt amet maiores suscipit doloremque earum, dolore possimus ea voluptatum sit eveniet perferendis voluptas molestias facere.</p>
+              <p>
+                Dengan menggunakan layanan kami, Anda menyetujui syarat dan
+                ketentuan yang telah ditetapkan. Harap membaca dengan seksama
+                untuk memahami hak dan kewajiban Anda sebagai pengguna.
+              </p>
             </Col>
           </Row>
           <Row className="py-3">
             <Col>
-              <h4 className="fw-bold">1. Lorem</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero debitis, ea alias possimus itaque explicabo, dignissimos inventore fuga mollitia id aperiam at voluptate quibusdam. Esse fuga, aperiam itaque modi doloremque, veritatis sint, deserunt vitae repellat dicta tempore voluptate autem? Laboriosam.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae porro fugit sint ab in illo, sequi eveniet. Assumenda doloribus, consectetur quisquam delectus laudantium illum ipsum maxime pariatur sint dolorum labore inventore culpa nobis facilis molestias quia eius nesciunt mollitia tempora harum veritatis. Vitae, quos iusto. Odit fuga ab corrupti voluptate adipisci, magni voluptatum dolorem doloribus totam! Eligendi facilis voluptate accusamus?</p>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis enim, ullam quasi nihil perferendis repellat quas expedita eos magni qui voluptatem voluptatibus rerum. Sequi dicta ipsa et tempore officiis culpa a? Commodi quod repellat corporis ab saepe atque tempora quaerat, est cumque deserunt dolores minus, similique vero ex voluptate, possimus voluptates amet! Corrupti quis nulla ducimus architecto, illum explicabo, perspiciatis quasi assumenda expedita eligendi, impedit quos quo? Vero veniam iusto recusandae, laborum, repellat velit nulla est totam, sed doloremque voluptatem.</p>
+              <h4 className="fw-bold">1. Pendaftaran</h4>
+              <p>
+                Untuk menggunakan layanan, pengguna harus mendaftar dengan
+                memberikan informasi yang akurat dan lengkap. Setiap pengguna
+                bertanggung jawab atas keamanan akun mereka dan harus segera
+                melaporkan aktivitas mencurigakan kepada kami.
+              </p>
             </Col>
           </Row>
           <Row className="py-3">
             <Col>
-              <h4 className="fw-bold">2. Lorem</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae adipisci unde temporibus ipsam sint, aut ipsa. Praesentium libero odio quos facere fuga maiores, distinctio perspiciatis est saepe ea, inventore qui aliquid? Quaerat reprehenderit omnis accusamus. Odio dicta, accusamus sequi nesciunt sint ipsa eius deleniti inventore laudantium architecto repudiandae sit animi eaque nisi voluptatem, repellendus doloremque obcaecati iure, assumenda tempora aliquam.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur alias placeat soluta laudantium labore ipsam possimus praesentium nulla quod est, dolorum ullam suscipit eum distinctio ut itaque autem. Eaque atque dolorum et, repellendus eum inventore nobis amet accusantium omnis sunt iusto quas. Ea officia illum, ipsa tempora vero nesciunt dicta temporibus! Ad soluta, iure cum nulla ducimus corrupti adipisci, non mollitia voluptatibus molestiae illo fugit facilis architecto. Iusto vel dignissimos quia optio quos, numquam excepturi itaque corporis nobis, quo accusamus.</p>
+              <h4 className="fw-bold">2. Pemesanan Layanan</h4>
+              <p>
+                Pengguna dapat memesan layanan melalui aplikasi dengan memilih
+                coach atau teman mabar yang tersedia. Harap memastikan
+                ketersediaan dan jadwal yang telah disepakati.
+              </p>
+              <p>
+                Biaya layanan harus dibayar di muka sesuai dengan tarif yang
+                telah ditentukan. Kami tidak bertanggung jawab atas
+                keterlambatan atau pembatalan dari pihak coach atau teman mabar.
+              </p>
             </Col>
           </Row>
           <Row className="py-3">
             <Col>
-              <h4 className="fw-bold">3. Lorem</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe dolorum vel obcaecati explicabo id architecto. Nostrum inventore dolore dignissimos ullam autem officiis deserunt repellendus dolorum! Quis voluptatem porro dignissimos? Provident nemo repudiandae ea. Doloribus culpa voluptatibus alias eos fugit consectetur.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio voluptas culpa unde nostrum tempora vero nobis ipsum voluptates tenetur vitae? Molestias reprehenderit mollitia totam distinctio a quibusdam? Voluptatum, ducimus debitis! Quo ipsam fuga, architecto corporis ea odit iusto quod aperiam dolor, laborum magni consectetur reiciendis quas aliquam deserunt ipsa nisi. Architecto commodi, eos quos nisi consequatur eum omnis pariatur facere unde, quia quisquam! Dolore molestiae culpa consectetur voluptates natus eveniet sed nisi quia fugit nesciunt porro, totam ullam. Dolores, assumenda.</p>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque obcaecati nobis aliquid nemo, quia sit, tenetur maxime animi aut accusantium nam. Distinctio quidem architecto rerum qui ipsum ab praesentium dolores, velit doloremque asperiores, amet aspernatur temporibus? Tempore nostrum porro eveniet nesciunt rem id exercitationem voluptatem, officia illum quisquam quibusdam magni nulla minus iusto distinctio animi repellendus repellat hic dolorum maxime!</p>
+              <h4 className="fw-bold">3. Pembatalan dan Pengembalian Dana</h4>
+              <p>
+                Pembatalan pemesanan dapat dilakukan sesuai dengan kebijakan
+                pembatalan yang berlaku. Pengembalian dana hanya akan diberikan
+                jika pembatalan dilakukan dalam jangka waktu yang ditentukan.
+              </p>
+              <p>
+                Jika coach atau teman mabar membatalkan pemesanan, pengguna
+                berhak mendapatkan pengembalian dana penuh atau memilih
+                pengganti sesuai ketersediaan.
+              </p>
+            </Col>
+          </Row>
+          <Row className="py-3">
+            <Col>
+              <h4 className="fw-bold">4. Tanggung Jawab Pengguna</h4>
+              <p>
+                Pengguna harus mematuhi semua aturan yang ditetapkan oleh coach
+                atau teman mabar selama sesi berlangsung. Pengguna dilarang
+                melakukan tindakan yang melanggar hukum atau merugikan pihak
+                lain.
+              </p>
+            </Col>
+          </Row>
+          <Row className="py-3">
+            <Col>
+              <h4 className="fw-bold">5. Penyelesaian Sengketa</h4>
+              <p>
+                Setiap sengketa yang timbul dari penggunaan layanan akan
+                diselesaikan melalui negosiasi terlebih dahulu. Jika negosiasi
+                gagal, sengketa akan diselesaikan sesuai dengan hukum yang
+                berlaku.
+              </p>
+            </Col>
+          </Row>
+          <Row className="py-3">
+            <Col>
+              <h4 className="fw-bold">6. Perubahan Syarat & Ketentuan</h4>
+              <p>
+                Kami berhak mengubah syarat dan ketentuan ini sewaktu-waktu.
+                Pengguna diharapkan untuk selalu memeriksa halaman ini untuk
+                mengetahui perubahan terbaru. Penggunaan layanan setelah
+                perubahan dianggap sebagai persetujuan terhadap syarat dan
+                ketentuan yang telah diperbarui.
+              </p>
             </Col>
           </Row>
         </Container>
       </div>
-      <Faq/>
+      <Faq />
     </div>
-  )
-}
+  );
+};
 
-export default SyaratKetenPage
+export default SyaratKetenPage;
