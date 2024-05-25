@@ -1,9 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Container, Row, Col} from "react-bootstrap"
-import {temanMabarData} from "../data/index"
 
 import Faq from "../components/Faq"
+import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useBackend } from "../data/useBackend"
 
 const TemanMabarPage = () => {
+  let navigate = useNavigate();
+  const [temanMabarData, setTemanMabarData] = useState([]);
+  const { GetSampleUsers } = useBackend();
+
+  useEffect(() => {
+       GetSampleUsers().then(x => setTemanMabarData(x.data))
+  }, []);
+
   return (
     <div className="kelas-page">
       <div className="kelas min-vh-100">
@@ -17,19 +28,16 @@ const TemanMabarPage = () => {
           <Row>
             {temanMabarData.map((temanMabar) => {
                 return(
-                  <Col key={temanMabar.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={temanMabar.delay}>
-                    <img src={temanMabar.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <Col key={temanMabar.userID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={500}>
+                    <img src={temanMabar.userPicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
                     <div className="star mb-2 px-3">
-                      <i className={temanMabar.star1}></i>
-                      <i className={temanMabar.star2}></i>
-                      <i className={temanMabar.star3}></i>
-                      <i className={temanMabar.star4}></i>
-                      <i className={temanMabar.star5}></i>
+                      <i className="fa-solid fa-star"></i>
+                      <p className="fw-bold">{temanMabar.userRating}</p>
                     </div>
-                    <h5 className="mb-5 px-3">{temanMabar.title}</h5>
+                    <h5 className="mb-5 px-3">{temanMabar.userName}</h5>
                     <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                      <p className="m-0 text-primary fw-bold">{temanMabar.price}</p>
-                      <button className="btn btn-danger rounded-1" >{temanMabar.buy}</button>
+                      <p className="m-0 text-primary fw-bold">{temanMabar.userPrice}</p>
+                      <button className="btn btn-danger rounded-1" onClick={() => navigate("/detail")}>Order</button>
                     </div>
                   </Col>
                 );

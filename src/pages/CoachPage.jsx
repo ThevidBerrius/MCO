@@ -5,8 +5,10 @@ import { useBackend } from "../data/useBackend";
 
 import Faq from "../components/Faq"
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CoachPage = () => {
+  let navigate = useNavigate();
   const [coachData, setCoachData] = useState([]);
   const { GetAllCoaches } = useBackend();
 
@@ -32,17 +34,14 @@ const CoachPage = () => {
                 return(
                   <Col key={coachs.coachID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={getRandomDelay()}>
                     <img src={coachs.coachPicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
-                    <div className="star mb-2 px-3">
+                    <div className="star mb-2 px-3" >
                       <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
+                      <p className="fw-bold">{coachs.coachRating}</p>
                     </div>
                     <h5 className="mb-5 px-3">{coachs.coachName}</h5>
                     <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
                       <p className="m-0 text-primary fw-bold">{coachs.coachPrice}</p>
-                      <button className="btn btn-danger rounded-1">Order</button>
+                      <button className="btn btn-danger rounded-1" onClick={() => navigate("/detail")}>Order</button>
                     </div>
                   </Col>
                 );
