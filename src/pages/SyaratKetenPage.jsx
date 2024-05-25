@@ -18,7 +18,7 @@ const SyaratKetenPage = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="pt-5">
+            <Col className="pt-5 animate__animated animate__fadeInUp animate__delay-1s">
               <p>
                 Dengan menggunakan layanan kami, Anda menyetujui syarat dan
                 ketentuan yang telah ditetapkan. Harap membaca dengan seksama
@@ -26,9 +26,9 @@ const SyaratKetenPage = () => {
               </p>
             </Col>
           </Row>
-          <Row className="py-3">
+          <Row className="py-3 animate__animated animate__fadeInUp animate__delay-1s">
             <Col>
-              <h4 className="fw-bold">1. Pendaftaran</h4>
+              <h4 className="fw-bold animate__animated animate__fadeInUp animate__delay-1s">1. Pendaftaran</h4>
               <p>
                 Untuk menggunakan layanan, pengguna harus mendaftar dengan
                 memberikan informasi yang akurat dan lengkap. Setiap pengguna
@@ -37,9 +37,9 @@ const SyaratKetenPage = () => {
               </p>
             </Col>
           </Row>
-          <Row className="py-3">
+          <Row className="py-3 animate__animated animate__fadeInUp animate__delay-1s">
             <Col>
-              <h4 className="fw-bold">2. Pemesanan Layanan</h4>
+              <h4 className="fw-bold animate__animated animate__fadeInUp animate__delay-1s">2. Pemesanan Layanan</h4>
               <p>
                 Pengguna dapat memesan layanan melalui aplikasi dengan memilih
                 coach atau teman mabar yang tersedia. Harap memastikan
@@ -52,9 +52,9 @@ const SyaratKetenPage = () => {
               </p>
             </Col>
           </Row>
-          <Row className="py-3">
+          <Row className="py-3 animate__animated animate__fadeInUp animate__delay-1s">
             <Col>
-              <h4 className="fw-bold">3. Pembatalan dan Pengembalian Dana</h4>
+              <h4 className="fw-bold animate__animated animate__fadeInUp animate__delay-1s">3. Pembatalan dan Pengembalian Dana</h4>
               <p>
                 Pembatalan pemesanan dapat dilakukan sesuai dengan kebijakan
                 pembatalan yang berlaku. Pengembalian dana hanya akan diberikan
@@ -67,9 +67,9 @@ const SyaratKetenPage = () => {
               </p>
             </Col>
           </Row>
-          <Row className="py-3">
+          <Row className="py-3 animate__animated animate__fadeInUp animate__delay-1s">
             <Col>
-              <h4 className="fw-bold">4. Tanggung Jawab Pengguna</h4>
+              <h4 className="fw-bold animate__animated animate__fadeInUp animate__delay-1s">4. Tanggung Jawab Pengguna</h4>
               <p>
                 Pengguna harus mematuhi semua aturan yang ditetapkan oleh coach
                 atau teman mabar selama sesi berlangsung. Pengguna dilarang
@@ -78,9 +78,9 @@ const SyaratKetenPage = () => {
               </p>
             </Col>
           </Row>
-          <Row className="py-3">
+          <Row className="py-3 animate__animated animate__fadeInUp animate__delay-1s">
             <Col>
-              <h4 className="fw-bold">5. Penyelesaian Sengketa</h4>
+              <h4 className="fw-bold animate__animated animate__fadeInUp animate__delay-1s">5. Penyelesaian Sengketa</h4>
               <p>
                 Setiap sengketa yang timbul dari penggunaan layanan akan
                 diselesaikan melalui negosiasi terlebih dahulu. Jika negosiasi
@@ -89,9 +89,9 @@ const SyaratKetenPage = () => {
               </p>
             </Col>
           </Row>
-          <Row className="py-3">
+          <Row className="py-3 animate__animated animate__fadeInUp animate__delay-1s">
             <Col>
-              <h4 className="fw-bold">6. Perubahan Syarat & Ketentuan</h4>
+              <h4 className="fw-bold animate__animated animate__fadeInUp animate__delay-1s">6. Perubahan Syarat & Ketentuan</h4>
               <p>
                 Kami berhak mengubah syarat dan ketentuan ini sewaktu-waktu.
                 Pengguna diharapkan untuk selalu memeriksa halaman ini untuk
