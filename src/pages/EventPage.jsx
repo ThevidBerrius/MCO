@@ -1,8 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Row, Col } from "react-bootstrap"
-import { dataEvent } from "../data/index"
+// import { dataEvent } from "../data/index"
 import Faq from "../components/Faq"
+import { useEffect, useState } from "react";
+import { useBackend } from "../data/useBackend";
+
 
 const EventPage = () => {
+  const [eventData, setEventData] = useState([]);
+  const { GetAllCoaches } = useBackend();
+
+  useEffect(() => {
+       GetAllCoaches().then(x => setEventData(x.data))
+  }, []);
+
   return (
     <div className="event-page">
       <div className="event">
@@ -14,13 +25,13 @@ const EventPage = () => {
             </Col>
           </Row>
           <Row>
-            {dataEvent.map((events) => {
+            {eventData.map((events) => {
               return(
-                <Col key={events.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={events.delay}>
-                  <img src={events.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
-                  <h5 className="mb-5 px-3">{events.title}</h5>
+                <Col key={events.eventID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={500}>
+                  <img src={events.eventPicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <h5 className="mb-5 px-3">{events.eventName}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <button className="btn btn-danger rounded-1">{events.button}</button>
+                    <button className="btn btn-danger rounded-1">Detail</button>
                   </div>
                 </Col>
               )
