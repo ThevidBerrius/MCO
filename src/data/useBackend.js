@@ -146,7 +146,7 @@ export const useBackend = () => {
     //USERS
     async function GetAllUsers() {
         const res = await axios.get('https://localhost:7150/users/getAllUsers');
-        return res.data;
+        return res;
     }
 
     async function GetSampleUsers() {
