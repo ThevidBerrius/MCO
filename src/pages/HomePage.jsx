@@ -1,20 +1,28 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Container, Row, Col} from "react-bootstrap";
 import HeroImage from '../assets/img/hero.png'
 
-import {GameTerbaru, dataSwiper} from "../data/index"
+import { dataSwiper} from "../data/index"
 import {useNavigate} from "react-router-dom"
 import Faq from "../components/Faq";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { useBackend } from "../data/useBackend";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { Pagination } from 'swiper/modules';
+import { useEffect, useState } from "react";
 
 
 const HomePage = () => {
   let navigate = useNavigate();
+  const [gameData, setGameData] = useState([]);
+  const { GetAllGames } = useBackend();
+
+  useEffect(() => {
+       GetAllGames().then(x => setGameData(x.data))
+  }, []);
 
   return (
     <div className="homepage">
@@ -42,13 +50,13 @@ const HomePage = () => {
             </Col>
           </Row>
           <Row>
-            {GameTerbaru.map((game) => {
+            {gameData.map((game) => {
               return(
-                <Col key={game.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={game.delay}>
-                  <img src={game.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
-                  <h5 className="mb-5 px-3">{game.title}</h5>
+                <Col key={game.gameID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={500}>
+                  <img src={game.gamePicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <h5 className="mb-5 px-3">{game.gameName}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <button className="btn btn-danger rounded-1" onClick={() => navigate("/temanmabar")}>{game.buy}</button>
+                    <button className="btn btn-danger rounded-1" onClick={() => navigate("/temanmabar")}>Order</button>
                   </div>
                 </Col>
               )
