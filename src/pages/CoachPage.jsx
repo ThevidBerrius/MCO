@@ -1,10 +1,20 @@
 import {Container, Row, Col} from "react-bootstrap"
-import {coachData} from "../data/index"
+// import {coachData} from "../data/index"
+import { useBackend } from "../data/useBackend";
 
 
 import Faq from "../components/Faq"
+import { useEffect, useState } from "react";
 
 const CoachPage = () => {
+  const [coachData, setCoachData] = useState([]);
+  const { GetAllCoaches } = useBackend();
+
+  useEffect(() => {
+       GetAllCoaches().then(x => setCoachData(x.data))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="kelas-page">
       <div className="kelas min-vh-100">
@@ -17,20 +27,22 @@ const CoachPage = () => {
           </Row>
           <Row>
             {coachData.map((coachs) => {
+                const getRandomDelay = () => Math.floor(Math.random() * (2000 - 100 + 1)) + 100;
+
                 return(
-                  <Col key={coachs.id} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={coachs.delay}>
-                    <img src={coachs.image} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <Col key={coachs.coachID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={getRandomDelay()}>
+                    <img src={coachs.coachPicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
                     <div className="star mb-2 px-3">
-                      <i className={coachs.star1}></i>
-                      <i className={coachs.star2}></i>
-                      <i className={coachs.star3}></i>
-                      <i className={coachs.star4}></i>
-                      <i className={coachs.star5}></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
                     </div>
-                    <h5 className="mb-5 px-3">{coachs.title}</h5>
+                    <h5 className="mb-5 px-3">{coachs.coachName}</h5>
                     <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                      <p className="m-0 text-primary fw-bold">{coachs.price}</p>
-                      <button className="btn btn-danger rounded-1">{coachs.buy}</button>
+                      <p className="m-0 text-primary fw-bold">{coachs.coachPrice}</p>
+                      <button className="btn btn-danger rounded-1">Order</button>
                     </div>
                   </Col>
                 );

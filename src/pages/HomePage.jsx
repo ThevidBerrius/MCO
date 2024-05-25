@@ -52,9 +52,10 @@ const HomePage = () => {
           <Row>
             {gameData.map((game) => {
               const getRandomDelay = () => Math.floor(Math.random() * (2000 - 100 + 1)) + 100;
-
+              
+              const randomDelay = getRandomDelay();
               return(
-                <Col key={game.gameID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={getRandomDelay()}>
+                <Col key={game.gameID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={String(randomDelay)}>
                   <img src={game.gamePicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
                   <h5 className="mb-5 px-3">{game.gameName}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
