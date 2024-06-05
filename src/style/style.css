@@ -847,5 +847,229 @@ header {
   }
 }
 
+/* Register Style */
+.register-page {
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding-bottom: 150px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.01vw var(--secondary-color);
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  padding: 25px;
+}
+
+.register-field {
+  position: relative;
+  width: 500px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-field input {
+  height: 50px;
+  width: 25vw;
+  font-size: 1.2vw;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: solid 0.1vw var(--secondary-color);
+  background-color: transparent;
+}
+
+.register-input:focus {
+  outline: none !important;
+  border-bottom: solid 0.1vw var(--secondary-color);
+}
+
+.register-input::placeholder {
+  color: var(--color-text);
+}
+
+.register-icons {
+  width: 1vw;
+  right: 0;
+}
+
+.containers {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.register-remember {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.register-submit {
+  margin: 2vw;
+}
+
+/* Checkbox Styles */
+.check {
+  cursor: pointer;
+  position: relative;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+
+.check:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34, 50, 84, 0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.check svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #c8ccd4;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+
+.check svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+
+.check svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+
+.check:hover:before {
+  opacity: 1;
+}
+
+.check:hover svg {
+  stroke: #006fa2;
+}
+
+#teman-mabar:checked + .check svg {
+  stroke: #006fa2;
+}
+
+#teman-mabar:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+
+#teman-mabar:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .register-field {
+    width: 400px;
+    margin: 40px;
+  }
+
+  .register-field input {
+    width: 40vw;
+    font-size: 1.5vw;
+  }
+
+  .register-icons {
+    width: 2vw;
+  }
+
+  .containers {
+    width: 90%;
+  }
+
+  .register-submit {
+    margin: 3vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-field {
+    width: 300px;
+    margin: 30px;
+  }
+
+  .register-field input {
+    width: 60vw;
+    font-size: 2vw;
+  }
+
+  .register-icons {
+    width: 3vw;
+  }
+
+  .containers {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .register-submit {
+    margin: 4vw;
+  }
+
+  .register-remember {
+    margin-bottom: 1vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-field {
+    width: 200px;
+    margin: 20px;
+  }
+
+  .register-field input {
+    width: 80vw;
+    font-size: 3vw;
+  }
+
+  .register-icons {
+    width: 4vw;
+  }
+
+  .containers {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .register-submit {
+    margin: 5vw;
+  }
+
+  .register-remember {
+    margin-bottom: 2vw;
+  }
+}
 
 

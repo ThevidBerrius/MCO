@@ -8,7 +8,7 @@ const Footer = () => {
         <Row className="d-flex justify-content-between">
           <Col lg="5">
             <h3 className="fw-bold">MCO</h3>
-            <p className="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis rerum temporibus recusandae at voluptatibus. Atque libero numquam dolore accusantium necessitatibus.</p>
+            <p className="desc">MCO adalah platform inovatif yang menghubungkan Anda dengan coach profesional dan teman mabar online. Kami menyediakan berbagai layanan untuk meningkatkan pengalaman bermain game Anda, baik untuk belajar strategi baru, meningkatkan skill, atau sekadar mencari teman bermain yang seru. Dengan MCO, Anda dapat menemukan coach yang berpengalaman dalam berbagai game dan teman mabar yang cocok untuk bermain bersama kapan saja.</p>
             <div className="no mb-1 mt-4">
               <Link className="text-decoration-none">
                 <i className="fa-brands fa-whatsapp"></i>
