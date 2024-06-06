@@ -1,14 +1,66 @@
+import { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useBackend } from "../data/useBackend";
+import { useLocalStorage } from "../data/useLocalStorage";
+
 const LoginPage = () => {
   let navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [save, setSave] = useState(false);
+  const { UserLogin } = useBackend();
+  const { setItem } = useLocalStorage("User");
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  }
+  const handleChecked = () => {
+    setSave(!save)
+  }
+
+  const setStorage = {
+    userID: "",
+    userName: "",
+    userPassword: "",
+    userDescription: "",
+    userRating: 0,
+    userPicture: "",
+    userIsPlayer: false,
+    userPrice: 0,
+    userGameID: ""
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const responses = await UserLogin(username, password);
+    if (responses.status === 200) {
+      setStorage.userID = responses.data.userID;
+      setStorage.userName = responses.data.userName;
+      setStorage.userPassword = responses.data.userPassword;
+      setStorage.userDescription = responses.data.userDescription;
+      setStorage.userRating = responses.data.userRating;
+      setStorage.userPicture = responses.data.userPicture;
+      setStorage.userIsPlayer = responses.data.userIsPlayer;
+      setStorage.userPrice = responses.data.userPrice;
+      setStorage.userGameID = responses.data.userGameID;
+      setItem(setStorage);
+      navigate("/");
+    }
+    else {
+      alert("Wrong Username or Password");
+    }
+  }
 
   return (
-    <div className="login-page">
-      <form className="login-form">
+    < div className="login-page" >
+      <form className="login-form" onSubmit={handleSubmit}>
         <h1 className="fw-bold">Login</h1>
         <div className="login-field">
-          <input className="login-input" type="text" placeholder="Username" />
+          <input className="login-input" type="text" placeholder="Username" value={username} onChange={handleUsernameChange} />
           <div className="login-icons">
             <FaUser />
           </div>
@@ -18,13 +70,15 @@ const LoginPage = () => {
             className="login-input"
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
           />
           <div className="login-icons">
             <FaLock />
           </div>
         </div>
         <div className="containers">
-          <div className="login-remember">
+          <div className="login-remember" onChange={handleChecked}>
             <div className="container">
               <input type="checkbox" id="cbx" style={{ display: "none" }} />
               <label htmlFor="cbx" className="check">
@@ -55,8 +109,8 @@ const LoginPage = () => {
         <div className="login-create-account">
           <p onClick={() => navigate("/register")} >Dont Have Account</p>
         </div>
-      </form>
-    </div>
+      </form >
+    </div >
   );
 };
 
