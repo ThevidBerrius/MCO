@@ -1294,3 +1294,41 @@ header {
     font-size: 0.9rem;
   }
 }
+
+/* Style TransactionPage */
+.transaction-page .transaction{
+  padding-top: 150px;
+  background-color: var(--primary-color);
+}
+
+.transaction-page .transaction h1{
+  color: var(--color-text);
+  padding-bottom: 50px;
+}
+
+.transaction .card {
+  border-radius: 15px;
+}
+
+.transaction .card:hover {
+  cursor: pointer;
+}
+
+.transaction .card img {
+  object-fit: cover;
+}
+
+.transaction .card-title {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+.transaction .card-text {
+  font-size: 1rem;
+  color: blue;
+}
+
+.transaction .badge {
+  font-size: 0.9rem;
+}

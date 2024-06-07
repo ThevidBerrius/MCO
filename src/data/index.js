@@ -557,3 +557,30 @@ export const dataEvent = [
     delay: "600",
   },
 ];
+
+export const transactions = [
+  {
+    id: 1,
+    coachImage: People1,
+    role: 'Coach',
+    coachName: 'John Doe',
+    coachPrice: 100,
+    status: 'Done',
+  },
+  {
+    id: 2,
+    coachImage: People2,
+    role: 'Teman Mabar',
+    coachName: 'Jane Smith',
+    coachPrice: 150,
+    status: 'On Progress',
+  },
+  {
+    id: 3,
+    coachImage: People3,
+    role: 'Coach',
+    coachName: 'Alice Johnson',
+    coachPrice: 200,
+    status: 'Canceled',
+  },
+];
