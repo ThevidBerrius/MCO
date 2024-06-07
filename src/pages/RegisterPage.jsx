@@ -43,7 +43,7 @@ const RegisterPage = () => {
         </div>
         {isTemanMabar && (
           <div className="register-field">
-            <input className="register-input" type="text" placeholder="Price" />
+            <input className="register-input" type="number" placeholder="Price" />
             <div className="register-icons"><FaDollarSign /></div>
           </div>
         )}
