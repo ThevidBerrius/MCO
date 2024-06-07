@@ -77,9 +77,9 @@ const LoginPage = () => {
             <FaLock />
           </div>
         </div>
-        <div className="containers">
-          <div className="login-remember" onChange={handleChecked}>
-            <div className="container">
+        <div className="login-field">
+          <div className="containers">
+            <div className="login-remember" onChange={handleChecked}>
               <input type="checkbox" id="cbx" style={{ display: "none" }} />
               <label htmlFor="cbx" className="check">
                 <svg width="18px" height="18px" viewBox="0 0 18 18">
@@ -87,18 +87,18 @@ const LoginPage = () => {
                   <polyline points="1 9 7 14 15 4"></polyline>
                 </svg>
               </label>
+              <label className="remember-text" htmlFor="cbx">
+                Remember me
+              </label>
             </div>
-            <label className="remember-text" htmlFor="cbx">
-              Remember me
-            </label>
-          </div>
-          <div
-            className="login-forgot-password"
-            onClick={() => {
-              alert("Contact Customer Service From Contact Provided");
-            }}
-          >
-            <p>Forgot password?</p>
+            <div
+              className="login-forgot-password"
+              onClick={() => {
+                alert("Contact Customer Service From Contact Provided");
+              }}
+            >
+              <p>Forgot password?</p>
+            </div>
           </div>
         </div>
         <div className="login-submit">

@@ -22,13 +22,13 @@ const RegisterPage = () => {
           <input className="register-input" type="password" placeholder="Confirm Password" />
           <div className="register-icons"><FaCheck /></div>
         </div>
-        <div className="containers">
-          <div className="register-remember">
-            <div className="container">
-              <input 
-                type="checkbox" 
-                id="teman-mabar" 
-                style={{ display: "none" }} 
+        <div className="login-field">
+          <div className="containers">
+            <div className="register-remember">
+              <input
+                type="checkbox"
+                id="teman-mabar"
+                style={{ display: "none" }}
                 onChange={() => setIsTemanMabar(!isTemanMabar)}
               />
               <label htmlFor="teman-mabar" className="check">
@@ -37,8 +37,8 @@ const RegisterPage = () => {
                   <polyline points="1 9 7 14 15 4"></polyline>
                 </svg>
               </label>
+              <label className="remember-text" htmlFor="teman-mabar">Join as Teman Mabar?</label>
             </div>
-            <label className="remember-text" htmlFor="teman-mabar">Join as Teman Mabar?</label>
           </div>
         </div>
         {isTemanMabar && (
