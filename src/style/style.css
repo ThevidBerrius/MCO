@@ -930,6 +930,10 @@ header {
   margin: 2vw;
 }
 
+.dropdown-register-container {
+  width: 400px;
+}
+
 /* Checkbox Styles */
 .check {
   cursor: pointer;

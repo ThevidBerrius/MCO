@@ -1,28 +1,100 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { FaUser, FaLock, FaCheck, FaDollarSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useBackend } from "../data/useBackend";
 
 const RegisterPage = () => {
-  const [isTemanMabar, setIsTemanMabar] = useState(false);
   let navigate = useNavigate();
+  const [gameData, setGameData] = useState([]);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
+  const [isTemanMabar, setIsTemanMabar] = useState(false);
+  const [price, setPrice] = useState(0);
+  const [userGameID, setUserGameID] = useState('');
+  const { InsertUser, GetAllGames } = useBackend();
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  }
+  const handleConfirmPassChange = (event) => {
+    setConfirmPass(event.target.value)
+  }
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value)
+  }
+
+  const handleGameDropdownChange = (event) => {
+    setUserGameID(event.target.value)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (username === '') {
+      alert('Username must be fileld');
+      return;
+    }
+    if (password === '' || password === '') {
+      alert('Password must be filled and confirmed')
+      return;
+    }
+    if (isTemanMabar && price === 0 || isTemanMabar && price < 0) {
+      alert("As teman mabar must have a valid price")
+      return;
+    }
+    if (userGameID === '') {
+      alert("Game must be filled");
+      return;
+    }
+    if (password !== confirmPass) {
+      alert("Password and confirm password Mismatch");
+      return;
+    }
+    const responses = await InsertUser(
+      username,
+      password,
+      "Hey there! I'm " + username + " an avid gamer with a passion for exploring virtual worlds and tackling in-game challenges. I've been gaming for years and have developed a diverse taste in games, ranging from competitive shooters to relaxing simulation games.",
+      "https://static.vecteezy.com/system/resources/previews/036/280/650/original/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg",
+      isTemanMabar,
+      isTemanMabar ? price : 0,
+      userGameID
+    );
+    if (responses.status === 200) {
+      alert("Registration Success");
+      navigate("/login");
+    }
+    else {
+      alert("Register Failed");
+      return;
+    }
+  }
+
+  useEffect(() => {
+    GetAllGames().then(x => setGameData(x.data))
+  }, [])
 
   return (
     <div className="register-page">
       <form className="register-form">
         <h1 className="fw-bold">Register</h1>
         <div className="register-field">
-          <input className="register-input" type="text" placeholder="Username" />
+          <input className="register-input" type="text" placeholder="Username" onChange={handleUsernameChange} />
           <div className="register-icons"><FaUser /></div>
         </div>
         <div className="register-field">
-          <input className="register-input" type="password" placeholder="Password" />
+          <input className="register-input" type="password" placeholder="Password" onChange={handlePasswordChange} />
           <div className="register-icons"><FaLock /></div>
         </div>
         <div className="register-field">
-          <input className="register-input" type="password" placeholder="Confirm Password" />
+          <input className="register-input" type="password" placeholder="Confirm Password" onChange={handleConfirmPassChange} />
           <div className="register-icons"><FaCheck /></div>
         </div>
-        <div className="login-field">
+        <div className="register-field">
           <div className="containers">
             <div className="register-remember">
               <input
@@ -43,12 +115,24 @@ const RegisterPage = () => {
         </div>
         {isTemanMabar && (
           <div className="register-field">
-            <input className="register-input" type="number" placeholder="Price" />
-            <div className="register-icons"><FaDollarSign /></div>
+            <input className="register-input" type="number" placeholder="Price" onChange={handlePriceChange} />
+            <div className="register-icons" ><FaDollarSign /></div>
           </div>
         )}
+        <div className="register-field">
+          <div className="dropdown-register-container">
+            <select className="form-select" aria-label="Default select example" onChange={handleGameDropdownChange}>
+              <option value=''>Select Game</option>
+              {gameData.map((game) => {
+                return (
+                  <option key={game.gameID} value={game.gameID}>{game.gameName}</option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
         <div className="register-submit">
-          <button type="submit" className="btn btn-danger btn-lg rounded-1"><b>Register</b></button>
+          <button type="submit" className="btn btn-danger btn-lg rounded-1" onClick={handleSubmit}><b>Register</b></button>
         </div>
         <div className="login-create-account">
           <p onClick={() => navigate("/login")} >Already have account?</p>
