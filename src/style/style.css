@@ -48,6 +48,9 @@
   color: var(--navbar-color);
 }
 
+.dropdown-menu-main {
+  width: 5vw;
+}
 
 /* Style Homepage Header*/
 header {

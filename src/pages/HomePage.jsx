@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import HeroImage from '../assets/img/hero.png'
 
-import { dataSwiper} from "../data/index"
-import {useNavigate} from "react-router-dom"
+import { dataSwiper } from "../data/index"
+import { useNavigate } from "react-router-dom"
 import Faq from "../components/Faq";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,7 +21,7 @@ const HomePage = () => {
   const { GetAllGames } = useBackend();
 
   useEffect(() => {
-       GetAllGames().then(x => setGameData(x.data))
+    GetAllGames().then(x => setGameData(x.data))
   }, []);
 
   return (
@@ -36,7 +36,7 @@ const HomePage = () => {
               <button className="btn btn-outline-danger btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => navigate("/coach")}>Cari Coach</button>
             </Col>
             <Col lg="6" className="pt-lg-0 pt-5">
-              <img src={HeroImage} alt="hero-img" className="animate__animated animate__fadeInUp"/>
+              <img src={HeroImage} alt="hero-img" className="animate__animated animate__fadeInUp" />
             </Col>
           </Row>
         </Container>
@@ -46,17 +46,17 @@ const HomePage = () => {
           <Row>
             <Col>
               <h1 className="text-center fw-bold">Pilih Game</h1>
-              <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <p className="text-center">Pilih game yang sesuai dengan kemauanmu.</p>
             </Col>
           </Row>
           <Row>
             {gameData.map((game) => {
               const getRandomDelay = () => Math.floor(Math.random() * (2000 - 100 + 1)) + 100;
-              
+
               const randomDelay = getRandomDelay();
-              return(
+              return (
                 <Col key={game.gameID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={String(randomDelay)}>
-                  <img src={game.gamePicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
+                  <img src={game.gamePicture} alt="unsplash.com" className="w-100 mb-5 rounded-top" />
                   <h5 className="mb-5 px-3">{game.gameName}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
                     <button className="btn btn-danger rounded-1" onClick={() => navigate("/temanmabar")}>Order</button>
@@ -108,11 +108,11 @@ const HomePage = () => {
               className="mySwiper"
             >
               {dataSwiper.map((data) => {
-                return(
+                return (
                   <SwiperSlide key={data.id} className="shadow-sm">
                     <p className="desc">{data.desc}</p>
                     <div className="people">
-                      <img src={data.image} alt=""/>
+                      <img src={data.image} alt="" />
                       <div>
                         <h5 className="mb-1">{data.name}</h5>
                         <p className="m-0 fw-bold">{data.skill}</p>
@@ -120,13 +120,13 @@ const HomePage = () => {
                     </div>
                   </SwiperSlide>
                 )
-              })}   
+              })}
             </Swiper>
           </Row>
         </Container>
       </div>
       {/* Section FAQ */}
-      <Faq/>
+      <Faq />
     </div>
   )
 }

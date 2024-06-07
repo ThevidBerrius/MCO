@@ -1,4 +1,12 @@
 export const useLocalStorage = (key) => {
+    const initializeItem = () => {
+        try {
+            window.localStorage.setItem(key, JSON.stringify(""));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const setItem = (value) => {
         try {
             window.localStorage.setItem(key, JSON.stringify(value));
@@ -29,5 +37,5 @@ export const useLocalStorage = (key) => {
         window.localStorage.clear();
     }
 
-    return { setItem, getItem, removeItem, clearStorage }
+    return { setItem, getItem, removeItem, clearStorage, initializeItem }
 }

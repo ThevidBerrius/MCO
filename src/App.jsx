@@ -16,8 +16,11 @@ import ApiTestPage from './pages/ApiTestPage'
 import RegisterPage from './pages/RegisterPage'
 import TopUpPage from './pages/TopUpPage'
 import EventDetailPage from './pages/EventDetailPage'
+import { useLocalStorage } from './data/useLocalStorage'
 
 export default function App() {
+  const { initializeItem } = useLocalStorage("User");
+  initializeItem();
   return (
     <div>
       <NavBar />
