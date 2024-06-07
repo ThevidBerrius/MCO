@@ -14,6 +14,8 @@ import DetailPage from './pages/DetailPage'
 import LoginPage from './pages/LoginPage'
 import ApiTestPage from './pages/ApiTestPage'
 import RegisterPage from './pages/RegisterPage'
+import TopUpPage from './pages/TopUpPage'
+import EventDetailPage from './pages/EventDetailPage'
 
 export default function App() {
   return (
@@ -30,6 +32,8 @@ export default function App() {
         <Route path='/detail' Component={DetailPage} />
         <Route path='/login' Component={LoginPage} />
         <Route path='/register' Component={RegisterPage} />
+        <Route path='/topup' Component={TopUpPage} />
+        <Route path='/eventdetail' Component={EventDetailPage} />
         <Route path='/testAPI' Component={ApiTestPage} />
       </Routes>
       <Footer />

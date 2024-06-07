@@ -4,9 +4,11 @@ import { Container, Row, Col } from "react-bootstrap"
 import Faq from "../components/Faq"
 import { useEffect, useState } from "react";
 import { useBackend } from "../data/useBackend";
+import { useNavigate } from "react-router-dom";
 
 
 const EventPage = () => {
+  let navigate = useNavigate();
   const [eventData, setEventData] = useState([]);
   const { GetAllCoaches } = useBackend();
 
@@ -31,7 +33,7 @@ const EventPage = () => {
                   <img src={events.eventPicture} alt="unsplash.com" className="w-100 mb-5 rounded-top"/>
                   <h5 className="mb-5 px-3">{events.eventName}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <button className="btn btn-danger rounded-1">Detail</button>
+                    <button className="btn btn-danger rounded-1" onClick={() => navigate("/eventdetail")}>Detail</button>
                   </div>
                 </Col>
               )
