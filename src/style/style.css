@@ -1072,4 +1072,137 @@ header {
   }
 }
 
+/* Top Up Style */
+.topup-page {
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding-bottom: 150px;
+}
+
+.topup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.01vw var(--secondary-color);
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  padding: 25px;
+}
+
+.topup-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.topup-option {
+  width: 45%;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topup-option input[type="radio"] {
+  display: none;
+}
+
+.topup-option label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.topup-option input[type="radio"]:checked + label {
+  background-color: var(--secondary-color);
+}
+
+.topup-amount {
+  display: flex;
+  align-items: center;
+  font-size: 1.2vw;
+}
+
+.topup-amount svg {
+  margin-right: 10px;
+}
+
+.topup-price {
+  font-size: 1.2vw;
+}
+
+.topup-submit {
+  margin: 2vw;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .topup-option label {
+    font-size: 1.5vw;
+  }
+
+  .topup-price {
+    font-size: 1.5vw;
+  }
+
+  .topup-amount {
+    font-size: 1.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .topup-option {
+    width: 100%;
+  }
+
+  .topup-option label {
+    font-size: 2vw;
+  }
+
+  .topup-price {
+    font-size: 2vw;
+  }
+
+  .topup-amount {
+    font-size: 2vw;
+  }
+
+  .topup-submit {
+    margin: 4vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .topup-option {
+    width: 100%;
+  }
+
+  .topup-option label {
+    font-size: 3vw;
+  }
+
+  .topup-price {
+    font-size: 3vw;
+  }
+
+  .topup-amount {
+    font-size: 3vw;
+  }
+
+  .topup-submit {
+    margin: 5vw;
+  }
+}
 
