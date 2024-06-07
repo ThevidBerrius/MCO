@@ -31,7 +31,8 @@ const LoginPage = () => {
     userPicture: "",
     userIsPlayer: false,
     userPrice: 0,
-    userGameID: ""
+    userGameID: "",
+    userCurrency: 0,
   }
 
   const handleSubmit = async (event) => {
@@ -47,6 +48,8 @@ const LoginPage = () => {
       setStorage.userIsPlayer = responses.data.userIsPlayer;
       setStorage.userPrice = responses.data.userPrice;
       setStorage.userGameID = responses.data.userGameID;
+      setStorage.userCurrency = responses.data.wallets.currencyOwned;
+
       setItem(setStorage);
       navigate("/");
     }

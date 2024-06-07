@@ -10,7 +10,7 @@ const NavBar = () => {
   const { getItem, clearStorage, initializeItem } = useLocalStorage("User");
 
   const userData = getItem();
-
+  console.log(userData);
   const [changeColor, setChangeColor] = useState(false);
 
   const changeBackgroundColor = () => {
