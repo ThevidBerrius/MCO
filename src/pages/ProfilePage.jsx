@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from "react";
 import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
-import { FaUser, FaLock, FaCheck, FaDollarSign, FaCamera } from "react-icons/fa";
+import { FaUser, FaLock, FaCheck, FaDollarSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const EditProfilePage = () => {
@@ -13,8 +14,8 @@ const EditProfilePage = () => {
   const [price, setPrice] = useState(0);
   const [userGameID, setUserGameID] = useState("");
   const [description, setDescription] = useState("");
-  const [profileImage, setProfileImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [profileImage, setProfileImage] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -41,15 +42,9 @@ const EditProfilePage = () => {
   };
 
   const handleProfileImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setProfileImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    const url = event.target.value;
+    setProfileImage(url);
+    setImagePreview(url);
   };
 
   const handleSubmit = (event) => {
@@ -76,24 +71,20 @@ const EditProfilePage = () => {
           <Form onSubmit={handleSubmit}>
             <h1 className="fw-bold text-center mb-4">Edit Profile</h1>
 
+            {/* Profile Image */}
             <Form.Group className="mb-3 text-center position-relative">
-              <Form.Label htmlFor="profileImage">
-                <Image
-                  src={imagePreview || (profileImage ? URL.createObjectURL(profileImage) : "https://via.placeholder.com/150")}
-                  roundedCircle
-                  className="profile-image-preview"
-                />
-                <div className="upload-overlay">
-                  <FaCamera className="upload-icon" />
-                  <Form.Control
-                    id="profileImage"
-                    type="file"
-                    accept="image/*"
-                    className="d-none"
-                    onChange={handleProfileImageChange}
-                  />
-                </div>
-              </Form.Label>
+              <Image
+                src={imagePreview || profileImage || "https://via.placeholder.com/150"}
+                roundedCircle
+                className="profile-image-preview"
+              />
+              <Form.Control
+                type="text"
+                placeholder="Enter Image URL"
+                value={profileImage}
+                onChange={handleProfileImageChange}
+                className="mt-3"
+              />
             </Form.Group>
 
             {/* Username */}
