@@ -48,16 +48,16 @@ const CoachPage = () => {
                 <div className="d-flex align-items-center mb-2 px-3">
                   <h5 className="mb-0 me-3">{coach.coachName}</h5>
                   <div className="d-flex align-items-center justify-content-end flex-grow-1">
-                    <div className="star d-flex align-items-center">
-                      <FaStar className="text-warning me-1" />
-                      <span className="fw-bold">{coach.coachRating}</span>
-                    </div>
+                    <p className="m-0 text-primary fw-bold me-2">
+                      {coach.coachPrice} <FaCoins />
+                    </p>
                   </div>
                 </div>
-                <div className="ket d-flex justify-content-end align-items-center px-3 pb-3">
-                  <p className="m-0 text-primary fw-bold me-2">
-                    {coach.coachPrice} <FaCoins />
-                  </p>
+                <div className="ket d-flex align-items-center justify-content-between px-3 pb-3">
+                  <div className="star d-flex align-items-center">
+                    <FaStar className="text-warning me-1" />
+                    <span className="fw-bold">{coach.coachRating}</span>
+                  </div>
                   <button
                     className="btn btn-danger rounded-1"
                     onClick={() => navigate(`/detail/coach/${coach.coachID}`)}

@@ -31,20 +31,39 @@ const TemanMabarPage = () => {
           </Row>
           <Row>
             {temanMabarData.map((user) => (
-              <Col key={user.userID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={500}>
-                <img src={user.userPicture} alt="Profile" className="w-100 mb-5 rounded-top object-fit-cover" />
+              <Col
+                key={user.userID}
+                className="shadow rounded"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay={500}
+              >
+                <img
+                  src={user.userPicture}
+                  alt="Profile"
+                  className="w-100 mb-5 rounded-top object-fit-cover"
+                />
                 <div className="d-flex align-items-center mb-2 px-3">
                   <h5 className="mb-0 me-3">{user.userName}</h5>
                   <div className="d-flex align-items-center justify-content-end flex-grow-1">
-                    <div className="star d-flex align-items-center">
-                      <FaStar className="text-warning me-1" />
-                      <span className="fw-bold">{user.userRating}</span>
-                    </div>
+                    <p className="m-0 text-primary fw-bold me-2">
+                      {user.userPrice} <FaCoins />
+                    </p>
                   </div>
                 </div>
-                <div className="ket d-flex justify-content-end align-items-center px-3 pb-3">
-                  <p className="m-0 text-primary fw-bold me-2">{user.userPrice} <FaCoins /></p>
-                  <button className="btn btn-danger rounded-1" onClick={() => navigate("/detail/temanMabar/" + user.userID)}>Order</button>
+                <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
+                  <div className="star d-flex align-items-center">
+                    <FaStar className="text-warning me-1" />
+                    <span className="fw-bold">{user.userRating}</span>
+                  </div>
+                  <button
+                    className="btn btn-danger rounded-1"
+                    onClick={() =>
+                      navigate("/detail/temanMabar/" + user.userID)
+                    }
+                  >
+                    Order
+                  </button>
                 </div>
               </Col>
             ))}
