@@ -67,7 +67,7 @@ const HomePage = () => {
           </Row>
           <Row>
             <Col className="text-center">
-              <button className="btn btn-success rounded-5 btn-lg" data-aos="fade-up" data-aos-duration="1000" onClick={() => navigate("/event")}>Lihat Semua Game  <i className="fa-solid fa-chevron-right ms-1"></i> </button>
+              <button className="btn btn-success rounded-5 btn-lg" data-aos="fade-up" data-aos-duration="1000" onClick={() => navigate("/event")}>Lihat Semua Event  <i className="fa-solid fa-chevron-right ms-1"></i> </button>
             </Col>
           </Row>
         </Container>
