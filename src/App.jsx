@@ -16,6 +16,7 @@ import ApiTestPage from './pages/ApiTestPage'
 import RegisterPage from './pages/RegisterPage'
 import TopUpPage from './pages/TopUpPage'
 import EventDetailPage from './pages/EventDetailPage'
+import TransactionPage from './pages/TransactionPage'
 import { useLocalStorage } from './data/useLocalStorage'
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
         <Route path='/register' Component={RegisterPage} />
         <Route path='/topup' Component={TopUpPage} />
         <Route path='/eventdetail' Component={EventDetailPage} />
+        <Route path='/transaction' Component={TransactionPage} />
         <Route path='/testAPI' Component={ApiTestPage} />
       </Routes>
       <Footer />
