@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Row, Col } from "react-bootstrap"
-import Faq from "../components/Faq"
 import coachImage from "../assets/img/testimonial/people-1.jpg"
 import { Navigate, useParams } from "react-router-dom"
 import { useBackend } from "../data/useBackend"
 import { useEffect, useState } from "react"
+import Comments from "../components/DisplayComments"
 
 const DetailPage = () => {
 
@@ -64,7 +64,7 @@ const DetailPage = () => {
           </Row>
         </Container>
       </div>
-      <Faq />
+      <Comments />
     </div>
   )
 }

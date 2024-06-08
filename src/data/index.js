@@ -584,3 +584,42 @@ export const transactions = [
     status: 'Canceled',
   },
 ];
+
+export const commentsData = [
+  {
+    id: 1,
+    image: People1,
+    star1: "fa-solid fa-star",
+    star2: "fa-solid fa-star",
+    star3: "fa-solid fa-star",
+    star4: "fa-solid fa-star",
+    star5: "fa-solid fa-star",
+    name: "John Doe",
+    text: "This is a great post!",
+    date: "2024-06-08", 
+  },
+  {
+    id: 2,
+    image: People2,
+    star1: "fa-solid fa-star",
+    star2: "fa-solid fa-star",
+    star3: "fa-solid fa-star",
+    star4: "fa-solid fa-star",
+    star5: "fa-regular fa-star",
+    name: "Jane Smith",
+    text: "Thanks for sharing this information.",
+    date: "2024-06-08", 
+  },
+  {
+    id: 3,
+    image: People3,
+    star1: "fa-solid fa-star",
+    star2: "fa-solid fa-star",
+    star3: "fa-solid fa-star",
+    star4: "fa-solid fa-star",
+    star5: "fa-solid fa-star",
+    name: "Alice Johnson",
+    text: "I found this very helpful, thank you!",
+    date: "2024-06-08", 
+  },
+];
