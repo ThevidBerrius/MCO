@@ -10,7 +10,6 @@ const NavBar = () => {
   const { getItem, clearStorage, initializeItem } = useLocalStorage("User");
 
   const userData = getItem();
-  console.log(userData);
   const [changeColor, setChangeColor] = useState(false);
 
   const changeBackgroundColor = () => {
@@ -62,6 +61,7 @@ const NavBar = () => {
                       initializeItem();
                       window.location.reload();
                     }}>Log Out</Dropdown.Item>
+                    <Dropdown.Item className='dropdown-menu-small' onClick={() => navigate("/topup")}>Top Up</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
