@@ -1296,12 +1296,12 @@ header {
 }
 
 /* Style TransactionPage */
-.transaction-page .transaction{
+.transaction-page .transaction {
   padding-top: 150px;
   background-color: var(--primary-color);
 }
 
-.transaction-page .transaction h1{
+.transaction-page .transaction h1 {
   color: var(--color-text);
   padding-bottom: 50px;
 }

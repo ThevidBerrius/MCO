@@ -1,18 +1,29 @@
-import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
+import { Container, Row, Col, Card, Badge, Button } from 'react-bootstrap';
 import { transactions } from '../data';
 import { FaCoins } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const TransactionPage = () => {
   let navigate = useNavigate();
+  const [transactionList, setTransactionList] = useState(transactions);
+
+  const handleStatusChange = (id, newStatus) => {
+    const updatedTransactions = transactionList.map((order) =>
+      order.id === id ? { ...order, status: newStatus } : order
+    );
+    setTransactionList(updatedTransactions);
+  };
 
   return (
     <div className="transaction-page">
       <div className="transaction min-vh-100">
         <Container>
-          <h1 className="fw-bold text-center mb-2 fw-bold text-center mb-2 animate__animated animate__fadeInUp animate__delay-1s">Transaction & History</h1>
-          <Row className='animate__animated animate__fadeInUp animate__delay-1s'>
-            {transactions.map((order) => (
+          <h1 className="fw-bold text-center mb-2 animate__animated animate__fadeInUp animate__delay-1s">
+            Transaction & History
+          </h1>
+          <Row className="animate__animated animate__fadeInUp animate__delay-1s">
+            {transactionList.map((order) => (
               <Col xs={12} key={order.id} className="mb-4">
                 <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
@@ -24,12 +35,37 @@ const TransactionPage = () => {
                         width="80"
                         height="80"
                       />
-                      <div className="ms-3">
+                      <div className="ms-3 flex-grow-1">
                         <Card.Title>{order.coachName} - {order.role}</Card.Title>
-                        <Card.Text>{order.coachPrice} <FaCoins/></Card.Text>
+                        <Card.Text>{order.coachPrice} <FaCoins /></Card.Text>
                       </div>
+                      {order.status === 'On Progress' && (
+                        <div className="d-flex">
+                          <Button
+                            variant="danger"
+                            size="sm"
+                            className="me-2"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleStatusChange(order.id, 'Canceled');
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            variant="success"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleStatusChange(order.id, 'Done');
+                            }}
+                          >
+                            Done
+                          </Button>
+                        </div>
+                      )}
                     </div>
-                    <div className="d-flex justify-content-end">
+                    <div className="d-flex justify-content-end align-items-center mt-3">
                       <Badge
                         bg={
                           order.status === 'Done'
@@ -50,7 +86,7 @@ const TransactionPage = () => {
         </Container>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default TransactionPage;
