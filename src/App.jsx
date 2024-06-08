@@ -33,7 +33,7 @@ export default function App() {
         <Route path='/faq' Component={FaqPage} />
         <Route path='/syaratketen' Component={SyaratKetenPage} />
         <Route path='/event' Component={EventPage} />
-        <Route path='/detail' Component={DetailPage} />
+        <Route path='/detail/:type/:id' Component={DetailPage} />
         <Route path='/login' Component={LoginPage} />
         <Route path='/register' Component={RegisterPage} />
         <Route path='/topup' Component={TopUpPage} />

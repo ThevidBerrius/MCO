@@ -2,13 +2,27 @@
 import { Container, Row, Col } from "react-bootstrap"
 import Faq from "../components/Faq"
 import coachImage from "../assets/img/testimonial/people-1.jpg"
-import { Navigate } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
+import { useBackend } from "../data/useBackend"
+import { useEffect, useState } from "react"
 
 const DetailPage = () => {
 
-  // useEffect(() => {
+  const { type, id } = useParams();
+  const { GetCoachDetail, GetUserDetail } = useBackend();
+  const [data, setData] = useState([]);
 
-  // }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      if (type == "coach") {
+        await GetCoachDetail(id).then(x => { setData(x.data); });
+      }
+      else {
+        await GetUserDetail(id).then(x => { setData(x.data); });
+      }
+    }
+    fetchData().catch(console.error);
+  }, [])
 
 
   return (
@@ -17,8 +31,11 @@ const DetailPage = () => {
         <Container>
           <Row>
             <Col>
-              <h1 className="fw-bold text-center mb-2 animate__animated animate__fadeInUp animate__delay-1s">Coach Name</h1>
-              <p className="text-center animate__animated animate__fadeInUp animate__delay-1s">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              {data.length != 0 &&
+                (<>
+                  <h1 className="fw-bold text-center mb-2 animate__animated animate__fadeInUp animate__delay-1s">{type == "coach" ? data.coachName : data.userName}</h1>
+                  <p className="text-center animate__animated animate__fadeInUp animate__delay-1s">Professional {data.games.gameName} {type == "coach" ? "Gaming Coach" : "Gaming Buddy"}.</p>
+                </>)}
             </Col>
           </Row>
           <Row>
