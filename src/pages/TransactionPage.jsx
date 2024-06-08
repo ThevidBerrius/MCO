@@ -14,7 +14,7 @@ const TransactionPage = () => {
           <Row className='animate__animated animate__fadeInUp animate__delay-1s'>
             {transactions.map((order) => (
               <Col xs={12} key={order.id} className="mb-4">
-                <Card className="h-100" onClick={() => navigate("/login")}>
+                <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
                     <div className="d-flex align-items-center">
                       <img

@@ -6,6 +6,7 @@ const TopUpPage = () => {
       <div className="topup-page">
         <form className="topup-form">
           <h1 className="fw-bold">Top Up Coins</h1>
+          <p>Currency Own: 200 <FaCoins />`</p>
           <div className="topup-options">
             <div className="topup-option">
               <input type="radio" id="coins100" name="coins" value="100" />
