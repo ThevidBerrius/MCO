@@ -65,8 +65,8 @@ const EditProfilePage = () => {
   };
 
   return (
-    <Container className="profile-page min-vh-100">
-      <Row className="profile justify-content-center">
+    <Container className="profile-page min-vh-100 ">
+      <Row className="profile justify-content-center animate__animated animate__fadeInUp animate__delay-1s">
         <Col xs={12} md={8} lg={6}>
           <Form onSubmit={handleSubmit}>
             <h1 className="fw-bold text-center mb-4">Edit Profile</h1>

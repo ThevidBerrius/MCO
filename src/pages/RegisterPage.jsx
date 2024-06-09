@@ -80,7 +80,7 @@ const RegisterPage = () => {
 
   return (
     <div className="register-page">
-      <form className="register-form">
+      <form className="register-form animate__animated animate__fadeInUp animate__delay-1s">
         <h1 className="fw-bold">Register</h1>
         <div className="register-field">
           <input className="register-input" type="text" placeholder="Username" onChange={handleUsernameChange} />

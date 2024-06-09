@@ -60,7 +60,7 @@ const LoginPage = () => {
 
   return (
     < div className="login-page" >
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form animate__animated animate__fadeInUp animate__delay-1s" onSubmit={handleSubmit}>
         <h1 className="fw-bold">Login</h1>
         <div className="login-field">
           <input className="login-input" type="text" placeholder="Username" value={username} onChange={handleUsernameChange} />

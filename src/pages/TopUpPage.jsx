@@ -35,9 +35,9 @@ const TopUpPage = () => {
   return (
     <>
       <div className="topup-page">
-        <form className="topup-form" onSubmit={handleCurrencyChange}>
+        <form className="topup-form " onSubmit={handleCurrencyChange}>
           <h1 className="fw-bold">Top Up Coins</h1>
-          <p>Currency Owned: {user.userCurrency} <FaCoins />`</p>
+          <p>Currency Owned: {user.userCurrency} <FaCoins /></p>
           <div className="topup-options">
             <div className="topup-option">
               <input type="radio" id="coins100" name="coins" value="100" onChange={handlePriceChange} />
