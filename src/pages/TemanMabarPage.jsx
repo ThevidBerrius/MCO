@@ -30,7 +30,7 @@ const TemanMabarPage = () => {
             </Col>
           </Row>
           <Row>
-            {temanMabarData.map((user) => (
+            {temanMabarData.filter(user => (user.userPrice != 0)).map((user) => (
               <Col
                 key={user.userID}
                 className="shadow rounded"
