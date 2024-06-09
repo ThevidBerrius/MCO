@@ -9,11 +9,18 @@ import { FaCoins, FaStar } from "react-icons/fa";
 const TemanMabarPage = () => {
   let navigate = useNavigate();
   const [temanMabarData, setTemanMabarData] = useState([]);
-  const { GetAllUsers } = useBackend();
+  const { GetAllUsers, GetAllGames } = useBackend();
+  const [game, setGame] = useState([]);
+  const [userGameID, setUserGameID] = useState('');
 
   useEffect(() => {
     GetAllUsers().then((x) => setTemanMabarData(x.data));
+    GetAllGames().then(x => setGame(x.data));
   }, []);
+
+  const handleGameDropdownChange = (event) => {
+    setUserGameID(event.target.value)
+  }
 
   return (
     <div className="kelas-page">
