@@ -43,7 +43,7 @@ export const useBackend = () => {
     }
 
     async function GetCoachOrderByCoachID(coachID) {
-        const res = await axios.get('https://localhost:7150/coachOrders/getOrderByCoachID/' + coachID);
+        const res = await axios.get('https://localhost:7150/comments/getSampleComments' + coachID);
         return res;
     }
 
@@ -66,6 +66,11 @@ export const useBackend = () => {
     }
 
     //COMMENTS
+    async function GetSampleComments() {
+        const res = await axios.get('https://localhost:7150/comments/getSampleComments/');
+        return res;
+    }
+
     async function GetCommentsByID(ID) {
         const res = await axios.get('https://localhost:7150/comments/getComments/' + ID);
         return res;
@@ -87,6 +92,11 @@ export const useBackend = () => {
     async function GetAllEvents() {
         const res = await axios.get('https://localhost:7150/events/getAllEvents');
         return res
+    }
+
+    async function GetEventByEventID(id) {
+        const res = await axios.get('https://localhost:7150/events/getEventByID/' + id);
+        return res;
     }
 
     async function GetSampleEvent() {
@@ -237,7 +247,7 @@ export const useBackend = () => {
 
     return {
         GetAllCoaches, GetSampleCoaches, GetCoachByGameID, GetCoachDetail, InsertCoach, GetCoachOrderByUserID, GetCoachOrderByCoachID, UpdateCoachOrderStatus, InsertCoachOrder,
-        GetCommentsByID, InsertComment, GetAllEvents, GetSampleEvent, GetEventByGame, InsertEvent, GetAllGames, GetGamesByID, GetUserOrderByUserID, UpdateUserOrderStatus, InsertUserOrder,
+        GetCommentsByID, GetSampleComments, InsertComment, GetAllEvents, GetSampleEvent, GetEventByEventID, GetEventByGame, InsertEvent, GetAllGames, GetGamesByID, GetUserOrderByUserID, UpdateUserOrderStatus, InsertUserOrder,
         GetAllUsers, GetSampleUsers, GetUserByGameID, GetUserDetail, UserLogin, InsertUser, UpdateUser, GetAllWallets, GetWalletByOwnerID, PurchaseService, InsertWallet
     }
 }

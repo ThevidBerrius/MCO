@@ -38,7 +38,7 @@ export default function App() {
         <Route path='/login' Component={LoginPage} />
         <Route path='/register' Component={RegisterPage} />
         <Route path='/topup' Component={TopUpPage} />
-        <Route path='/eventdetail' Component={EventDetailPage} />
+        <Route path='/eventdetail/:id' Component={EventDetailPage} />
         <Route path='/transaction' Component={TransactionPage} />
         <Route path='/profile' Component={ProfilePage} />
         <Route path='/testAPI' Component={ApiTestPage} />
