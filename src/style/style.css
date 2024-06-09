@@ -567,6 +567,17 @@ header {
   color: gold;
 }
 
+.detail-page .quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.detail-page .quantity-control .quantity {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 50px;
+  text-align: center;
+}
 
 @media screen and (max-width: 768px) {
   .detail-page .detail img {
