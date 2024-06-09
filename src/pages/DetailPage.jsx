@@ -29,7 +29,6 @@ const DetailPage = () => {
     fetchData().catch(console.error);
     setUser(getItem());
   }, []);
-  }, [])
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -70,12 +69,7 @@ const DetailPage = () => {
               {data.length != 0 && <p>{data.games.gameName}</p>}
 
               <h4 className="pt-3">Price:</h4>
-              <p className="m-0 text-primary fw-bold">{type == "coach" ? data.coachPrice : data.userPrice} <FaCoins/></p>
-
-              <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => {
-                console.log(user);
-                console.log(data)
-              }}>Order {type == "coach" ? "Coach" : "Gaming Buddy"}</button>
+              <p className="m-0 text-primary fw-bold">{type == "coach" ? data.coachPrice : data.userPrice} <FaCoins /></p>
               <h4 className="pt-3">Round:</h4>
               <div className="quantity-control mt-3">
                 <button
@@ -92,7 +86,10 @@ const DetailPage = () => {
                   +
                 </button>
               </div>
-              <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => Navigate("/")}>Order {type == "coach" ? "Coach" : "Gaming Buddy"}</button>
+              <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => {
+                console.log(user);
+                console.log(data)
+              }}>Order {type == "coach" ? "Coach" : "Gaming Buddy"}</button>
             </Col>
           </Row>
         </Container>
