@@ -35,7 +35,7 @@ const TopUpPage = () => {
   return (
     <>
       <div className="topup-page">
-        <form className="topup-form " onSubmit={handleCurrencyChange}>
+        <form className="topup-form animate__animated animate__fadeInUp animate__delay-1s" onSubmit={handleCurrencyChange}>
           <h1 className="fw-bold">Top Up Coins</h1>
           <p>Currency Owned: {user.userCurrency} <FaCoins /></p>
           <div className="topup-options">
