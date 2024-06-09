@@ -1368,6 +1368,12 @@ header {
   color: blue;
 }
 
+.transaction .detail .quantity-text {
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .transaction .badge {
   font-size: 0.9rem;
 }

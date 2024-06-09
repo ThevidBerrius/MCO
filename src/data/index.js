@@ -565,6 +565,7 @@ export const transactions = [
     role: 'Coach',
     coachName: 'John Doe',
     coachPrice: 100,
+    Quantity: 5,
     status: 'Done',
   },
   {
@@ -573,6 +574,7 @@ export const transactions = [
     role: 'Teman Mabar',
     coachName: 'Jane Smith',
     coachPrice: 150,
+    Quantity: 2,
     status: 'On Progress',
   },
   {
@@ -581,6 +583,7 @@ export const transactions = [
     role: 'Coach',
     coachName: 'Alice Johnson',
     coachPrice: 200,
+    Quantity: 1,
     status: 'Canceled',
   },
 ];
