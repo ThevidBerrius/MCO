@@ -89,6 +89,11 @@ export const useBackend = () => {
         return res
     }
 
+    async function GetSampleEvent() {
+        const res = await axios.get('https://localhost:7150/events/getSampleEvents');
+        return res;
+    }
+
     async function GetEventByGame(gameID) {
         const res = await axios.get('https://localhost:7150/events/getEventByGame/' + gameID);
         return res;
@@ -232,7 +237,7 @@ export const useBackend = () => {
 
     return {
         GetAllCoaches, GetSampleCoaches, GetCoachByGameID, GetCoachDetail, InsertCoach, GetCoachOrderByUserID, GetCoachOrderByCoachID, UpdateCoachOrderStatus, InsertCoachOrder,
-        GetCommentsByID, InsertComment, GetAllEvents, GetEventByGame, InsertEvent, GetAllGames, GetGamesByID, GetUserOrderByUserID, UpdateUserOrderStatus, InsertUserOrder,
+        GetCommentsByID, InsertComment, GetAllEvents, GetSampleEvent, GetEventByGame, InsertEvent, GetAllGames, GetGamesByID, GetUserOrderByUserID, UpdateUserOrderStatus, InsertUserOrder,
         GetAllUsers, GetSampleUsers, GetUserByGameID, GetUserDetail, UserLogin, InsertUser, UpdateUser, GetAllWallets, GetWalletByOwnerID, PurchaseService, InsertWallet
     }
 }

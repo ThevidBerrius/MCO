@@ -18,10 +18,10 @@ import { useEffect, useState } from "react";
 const HomePage = () => {
   let navigate = useNavigate();
   const [gameData, setGameData] = useState([]);
-  const { GetAllGames } = useBackend();
+  const { GetSampleEvent } = useBackend();
 
   useEffect(() => {
-    GetAllGames().then(x => setGameData(x.data))
+    GetSampleEvent().then(x => setGameData(x.data))
   }, []);
 
   return (
@@ -55,11 +55,11 @@ const HomePage = () => {
 
               const randomDelay = getRandomDelay();
               return (
-                <Col key={game.gameID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={String(randomDelay)}>
-                  <img src={game.gamePicture} alt="unsplash.com" className="w-100 mb-5 rounded-top" />
-                  <h5 className="mb-5 px-3">{game.gameName}</h5>
+                <Col key={game.eventID} className="shadow rounded" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={String(randomDelay)}>
+                  <img src={game.eventPicture} alt="unsplash.com" className="w-100 mb-5 rounded-top" />
+                  <h5 className="mb-5 px-3">{game.eventName}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
-                    <button className="btn btn-danger rounded-1" onClick={() => navigate("/eventdetail")}>Order</button>
+                    <button className="btn btn-danger rounded-1" onClick={() => navigate("/eventdetail")}>See More</button>
                   </div>
                 </Col>
               )
