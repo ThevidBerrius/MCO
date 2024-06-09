@@ -2,7 +2,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import HeroImage from '../assets/img/hero.png'
 
-import { dataSwiper } from "../data/index"
 import { useNavigate } from "react-router-dom"
 import Faq from "../components/Faq";
 
@@ -18,10 +17,12 @@ import { useEffect, useState } from "react";
 const HomePage = () => {
   let navigate = useNavigate();
   const [gameData, setGameData] = useState([]);
-  const { GetSampleEvent } = useBackend();
+  const [sampleComments, setSampleComments] = useState([]);
+  const { GetSampleEvent, GetSampleComments } = useBackend();
 
   useEffect(() => {
-    GetSampleEvent().then(x => setGameData(x.data))
+    GetSampleEvent().then(x => setGameData(x.data));
+    GetSampleComments().then(x => setSampleComments(x.data));
   }, []);
 
   return (
@@ -107,15 +108,17 @@ const HomePage = () => {
               modules={[Pagination]}
               className="mySwiper"
             >
-              {dataSwiper.map((data) => {
+              {sampleComments.map((data) => {
                 return (
-                  <SwiperSlide key={data.id} className="shadow-sm">
-                    <p className="desc">{data.desc}</p>
-                    <div className="people">
-                      <img src={data.image} alt="" />
-                      <div>
-                        <h5 className="mb-1">{data.name}</h5>
-                        <p className="m-0 fw-bold">{data.skill}</p>
+                  <SwiperSlide key={data.commentID} className="shadow-sm">
+                    <div className="sample-comment-container">
+                      <p className="desc">{data.commentContent}</p>
+                      <div className="people">
+                        <img src={data.commentPicture} alt="" />
+                        <div>
+                          <h5 className="mb-1">{data.commentSender}</h5>
+                          <p className="m-0 fw-bold">{data.commentRating} stars</p>
+                        </div>
                       </div>
                     </div>
                   </SwiperSlide>

@@ -71,12 +71,12 @@
   box-shadow: none;
 }
 
-.navbar-toggler:hover{
+.navbar-toggler:hover {
   box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width);
 }
 
-@media screen and (max-width: 992px){
-  .navbar{
+@media screen and (max-width: 992px) {
+  .navbar {
     background-color: var(--navbar-color);
   }
 }
@@ -1389,7 +1389,7 @@ header {
   border: none;
 }
 
-.comment-section .star{
+.comment-section .star {
   color: gold;
 }
 
