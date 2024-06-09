@@ -10,7 +10,7 @@ import { FaCoins } from "react-icons/fa"
 const DetailPage = () => {
 
   const { type, id } = useParams();
-  const { GetCoachDetail, GetUserDetail } = useBackend();
+  const { GetCoachDetail, GetUserDetail, InsertCoachOrder, InsertUserOrder } = useBackend();
   const { getItem } = useLocalStorage('User');
 
   const [data, setData] = useState([]);
@@ -86,10 +86,23 @@ const DetailPage = () => {
                   +
                 </button>
               </div>
-              <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => {
-                console.log(user);
-                console.log(data)
-              }}>Order {type == "coach" ? "Coach" : "Gaming Buddy"}</button>
+              <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={
+                async () => {
+
+                  if (user.userCurrency < parseInt(quantity) * parseInt(type == "coach" ? data.coachPrice : data.userPrice)) {
+                    alert("Currency not enough");
+                    return;
+                  }
+                  console.log(user.userCurrency);
+                  console.log(user.userID);
+                  console.log(type == "coach" ? data.coachID : data.userID);
+                  console.log(type == "coach" ? "Coaching" : "Playing");
+                  console.log("In Progress");
+                  console.log(parseInt(quantity) * parseInt(type == "coach" ? data.coachPrice : data.userPrice));
+                  console.log(0)
+                  type == "coach" && await InsertCoachOrder(user.userID, data.coachID, "Coaching", "In Progress", (parseInt(quantity) * parseInt(data.coachPrice)))
+                  type != "coach" && await InsertUserOrder(user.userID, data.userID, "Playing", "In Progress", (parseInt(quantity) * parseInt(data.userPrice)))
+                }}>Order {type == "coach" ? "Coach" : "Gaming Buddy"}</button>
             </Col>
           </Row>
         </Container>

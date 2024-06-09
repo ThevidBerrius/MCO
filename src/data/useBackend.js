@@ -55,7 +55,7 @@ export const useBackend = () => {
     }
 
     async function InsertCoachOrder(customerID, sellerID, orderType, orderStatus, orderPrice) {
-        const res = await axios.put('https://localhost:7150/coachOrders/insertOrder', {
+        const res = await axios.post('https://localhost:7150/coachOrders/insertOrder', {
             customerID: customerID,
             sellerID: sellerID,
             orderType: orderType,
@@ -148,7 +148,7 @@ export const useBackend = () => {
     }
 
     async function InsertUserOrder(customerID, sellerID, orderType, orderStatus, orderPrice) {
-        const res = await axios.put('https://localhost:7150/userOrders/insertOrder', {
+        const res = await axios.post('https://localhost:7150/userOrders/insertOrder', {
             customerID: customerID,
             sellerID: sellerID,
             orderType: orderType,
