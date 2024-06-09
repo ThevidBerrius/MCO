@@ -1,12 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Row, Col, Card, Badge, Button } from 'react-bootstrap';
 import { transactions } from '../data';
 import { FaCoins } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useBackend } from "../data/useBackend";
+import { useLocalStorage } from "../data/useLocalStorage";
 
 const TransactionPage = () => {
   let navigate = useNavigate();
   const [transactionList, setTransactionList] = useState(transactions);
+
+  const { GetCoachOrderByUserID, GetUserOrderByUserID } = useBackend();
+  const { getItem } = useLocalStorage("User");
 
   const handleStatusChange = (id, newStatus) => {
     const updatedTransactions = transactionList.map((order) =>
@@ -14,6 +20,28 @@ const TransactionPage = () => {
     );
     setTransactionList(updatedTransactions);
   };
+
+  const [orders, setOrders] = useState([]);
+
+  const handleOrders = async (x) => {
+    await setOrders(prevData => [...prevData, x.data]);
+  }
+
+  const effectRan = useRef(false);
+
+  useEffect(() => {
+    if (effectRan.current == false) {
+      const getOrders = async () => {
+        GetCoachOrderByUserID(getItem().userID).then(x => { handleOrders(x); });
+        GetUserOrderByUserID(getItem().userID).then(x => { handleOrders(x); console.log(x.data); });
+      }
+      getOrders();
+
+      return () => {
+        effectRan.current = true;
+      }
+    }
+  }, [])
 
   return (
     <div className="transaction-page">
@@ -23,22 +51,22 @@ const TransactionPage = () => {
             Transaction & History
           </h1>
           <Row className="animate__animated animate__fadeInUp animate__delay-1s">
-            {transactionList.map((order) => (
-              <Col xs={12} key={order.id} className="mb-4">
+            {orders.map((order) => (
+              <Col xs={12} key={order[0].orderID} className="mb-4">
                 <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
                     <div className="d-flex align-items-center">
                       <img
-                        src={order.coachImage}
-                        alt={order.coachName}
+                        src={order[0].orderType == "Coaching" ? order[0].coaches.coachPicture : order[0].seller.userPicture}
+                        alt={order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName}
                         className="rounded-circle"
                         width="80"
                         height="80"
                       />
                       <div className="detail ms-3 flex-grow-1">
-                        <Card.Title>{order.coachName} - {order.role}</Card.Title>
-                        <Card.Text>{order.coachPrice} <FaCoins /></Card.Text>
-                        <Card.Text className='quantity-text'>Quantity:  {order.Quantity}</Card.Text>
+                        <Card.Title>{order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName} - {order[0].orderType}</Card.Title>
+                        <Card.Text>{order[0].orderPrice} <FaCoins /></Card.Text>
+                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order[0].orderPrice) / parseInt(order[0].orderType == "Coaching" ? order[0].coaches.coachPrice : order[0].seller.userPrice)}</Card.Text>
                       </div>
                       {order.status === 'On Progress' && (
                         <div className="d-flex">
@@ -69,14 +97,14 @@ const TransactionPage = () => {
                     <div className="d-flex justify-content-end align-items-center mt-3">
                       <Badge
                         bg={
-                          order.status === 'Done'
+                          order[0].orderStatus === 'Finished'
                             ? 'success'
-                            : order.status === 'On Progress'
-                            ? 'warning'
-                            : 'danger'
+                            : order.status === 'In Progress'
+                              ? 'warning'
+                              : 'danger'
                         }
                       >
-                        {order.status}
+                        {order[0].orderStatus}
                       </Badge>
                     </div>
                   </Card.Body>
