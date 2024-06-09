@@ -1,16 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Row, Col } from "react-bootstrap"
-import { Navigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useBackend } from "../data/useBackend"
 import { useEffect, useState } from "react"
 import Comments from "../components/DisplayComments"
+import { useLocalStorage } from "../data/useLocalStorage"
 import { FaCoins } from "react-icons/fa"
 
 const DetailPage = () => {
 
   const { type, id } = useParams();
   const { GetCoachDetail, GetUserDetail } = useBackend();
+  const { getItem } = useLocalStorage('User');
+
   const [data, setData] = useState([]);
+  const [user, setUser] = useState([]);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -23,6 +27,8 @@ const DetailPage = () => {
       }
     }
     fetchData().catch(console.error);
+    setUser(getItem());
+  }, []);
   }, [])
 
   const incrementQuantity = () => {
@@ -34,7 +40,6 @@ const DetailPage = () => {
       setQuantity(quantity - 1);
     }
   };
-
 
   return (
     <div className="detail-page">
@@ -67,6 +72,10 @@ const DetailPage = () => {
               <h4 className="pt-3">Price:</h4>
               <p className="m-0 text-primary fw-bold">{type == "coach" ? data.coachPrice : data.userPrice} <FaCoins/></p>
 
+              <button className="btn btn-danger mt-3 btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInUp animate__delay-1s" onClick={() => {
+                console.log(user);
+                console.log(data)
+              }}>Order {type == "coach" ? "Coach" : "Gaming Buddy"}</button>
               <h4 className="pt-3">Round:</h4>
               <div className="quantity-control mt-3">
                 <button

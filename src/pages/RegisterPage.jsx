@@ -120,7 +120,7 @@ const RegisterPage = () => {
           </div>
         )}
         <div className="register-field">
-          <div className="dropdown-register-container">
+          <div className="dropdown-container">
             <select className="form-select" aria-label="Default select example" onChange={handleGameDropdownChange}>
               <option value=''>Select Game</option>
               {gameData.map((game) => {

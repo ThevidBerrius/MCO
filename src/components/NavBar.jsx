@@ -59,7 +59,7 @@ const NavBar = () => {
                     <Dropdown.Item className='dropdown-menu-small' onClick={() => {
                       clearStorage();
                       initializeItem();
-                      window.location.reload();
+                      navigate("/");
                     }}>Log Out</Dropdown.Item>
                     <Dropdown.Item className='dropdown-menu-small' onClick={() => navigate("/topup")}>Top Up</Dropdown.Item>
                   </Dropdown.Menu>
