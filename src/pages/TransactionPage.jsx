@@ -24,7 +24,7 @@ const TransactionPage = () => {
   const [orders, setOrders] = useState([]);
 
   const handleOrders = async (x) => {
-    await setOrders(prevData => [...prevData, x.data]);
+    setOrders(prevData => [...prevData, x.data]);
   }
 
   const effectRan = useRef(false);
@@ -33,10 +33,9 @@ const TransactionPage = () => {
     if (effectRan.current == false) {
       const getOrders = async () => {
         GetCoachOrderByUserID(getItem().userID).then(x => { handleOrders(x); });
-        GetUserOrderByUserID(getItem().userID).then(x => { handleOrders(x); console.log(x.data); });
+        GetUserOrderByUserID(getItem().userID).then(x => { handleOrders(x); });
       }
       getOrders();
-
       return () => {
         effectRan.current = true;
       }
@@ -56,6 +55,7 @@ const TransactionPage = () => {
                 <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
                     <div className="d-flex align-items-center">
+                      {console.log(order)}
                       <img
                         src={order[0].orderType == "Coaching" ? order[0].coaches.coachPicture : order[0].seller.userPicture}
                         alt={order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName}
@@ -68,7 +68,7 @@ const TransactionPage = () => {
                         <Card.Text>{order[0].orderPrice} <FaCoins /></Card.Text>
                         <Card.Text className='quantity-text'>Quantity:  {parseInt(order[0].orderPrice) / parseInt(order[0].orderType == "Coaching" ? order[0].coaches.coachPrice : order[0].seller.userPrice)}</Card.Text>
                       </div>
-                      {order.status === 'On Progress' && (
+                      {order[0].orderStatus === 'In Progress' && (
                         <div className="d-flex">
                           <Button
                             variant="danger"
@@ -93,13 +93,28 @@ const TransactionPage = () => {
                           </Button>
                         </div>
                       )}
+
+                      {(order[0].orderStatus === 'Finished' || order[0].orderStatus === 'Cancelled') && (
+                        <div className="d-flex">
+                          <Button
+                            variant="success"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleStatusChange(order.id, 'Done');
+                            }}
+                          >
+                            Re-Order
+                          </Button>
+                        </div>
+                      )}
                     </div>
                     <div className="d-flex justify-content-end align-items-center mt-3">
                       <Badge
                         bg={
                           order[0].orderStatus === 'Finished'
                             ? 'success'
-                            : order.status === 'In Progress'
+                            : order[0].orderStatus === 'In Progress'
                               ? 'warning'
                               : 'danger'
                         }
