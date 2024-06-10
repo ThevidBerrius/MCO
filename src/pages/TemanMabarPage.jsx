@@ -34,6 +34,16 @@ const TemanMabarPage = () => {
               <p className="text-center animate__animated animate__fadeInUp animate__delay-1s">
                 Temukan teman bermain yang sesuai dengan game kesukaanmu.
               </p>
+              <div className="dropdown-container animate__animated animate__fadeInUp animate__delay-1s">
+            <select className="form-select" aria-label="Default select example" onChange={handleGameDropdownChange}>
+              <option value=''>Select Game</option>
+              {game.map((game) => {
+                return (
+                  <option key={game.gameID} value={game.gameID}>{game.gameName}</option>
+                );
+              })}
+            </select>
+          </div>
             </Col>
           </Row>
           <Row>
