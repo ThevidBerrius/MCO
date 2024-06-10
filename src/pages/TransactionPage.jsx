@@ -94,7 +94,7 @@ const TransactionPage = () => {
                         </div>
                       )}
 
-                      {(order[0].orderStatus === 'Finished' || order[0].orderStatus === 'Cancelled') && (
+                      {(order[0].orderStatus === 'Finished' || order[0].orderStatus === 'Canceled') && (
                         <div className="d-flex">
                           <Button
                             variant="success"
