@@ -11,19 +11,18 @@ const CoachPage = () => {
   const [coachData, setCoachData] = useState([]);
   const { GetAllCoaches, GetAllGames } = useBackend();
   const [game, setGame] = useState([]);
-  const [userGameID, setUserGameID] = useState('');
-
-
+  const [userGameID, setUserGameID] = useState("");
 
   useEffect(() => {
     GetAllCoaches().then((x) => setCoachData(x.data));
-    GetAllGames().then(x => setGame(x.data));
+    GetAllGames().then((x) => setGame(x.data));
   }, []);
 
   const handleGameDropdownChange = (event) => {
-    setUserGameID(event.target.value)
-  }
-  const getRandomDelay = () => Math.floor(Math.random() * (2000 - 100 + 1)) + 100;
+    setUserGameID(event.target.value);
+  };
+  const getRandomDelay = () =>
+    Math.floor(Math.random() * (2000 - 100 + 1)) + 100;
 
   return (
     <div className="kelas-page">
@@ -37,16 +36,22 @@ const CoachPage = () => {
               <p className="text-center animate__animated animate__fadeInUp animate__delay-1s">
                 Tingkatkan kemampuan bermain game favoritmu.
               </p>
-              <div className="dropdown-container animate__animated animate__fadeInUp animate__delay-1s">
-            <select className="form-select" aria-label="Default select example" onChange={handleGameDropdownChange}>
-              <option value=''>Select Game</option>
-              {game.map((game) => {
-                return (
-                  <option key={game.gameID} value={game.gameID}>{game.gameName}</option>
-                );
-              })}
-            </select>
-          </div>
+              <div className="dropdown-kelas animate__animated animate__fadeInUp animate__delay-1s">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  onChange={handleGameDropdownChange}
+                >
+                  <option value="">Select Game</option>
+                  {game.map((game) => {
+                    return (
+                      <option key={game.gameID} value={game.gameID}>
+                        {game.gameName}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
             </Col>
           </Row>
           <Row>
