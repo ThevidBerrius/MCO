@@ -62,7 +62,7 @@ const DetailPage = () => {
 
               <h4 className="pt-3">Rating:</h4>
               <i className="fa-solid fa-star"></i>
-              <p>{type == "coach" ? data.coachRating : data.userRating}</p>
+              <p className="fw-bold">{type == "coach" ? data.coachRating : data.userRating}</p>
               <br />
 
               <h4 className="pt-3">{type == "coach" ? "Game Coached:" : "Game Played"}</h4>
