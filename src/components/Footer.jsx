@@ -2,6 +2,13 @@ import {Container, Row, Col} from "react-bootstrap"
 import {Link} from "react-router-dom"
 
 const Footer = () => {
+  const handleLinkedInClick = () => {
+    window.open('https://www.linkedin.com/in/thevidberrius', '_blank');
+  };
+
+  const handleYoutubeClick = () => {
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
+  };
   return (
     <div className="footer py-5">
       <Container>
@@ -36,8 +43,8 @@ const Footer = () => {
           <div className="social mt-3">
             <i className="fa-brands fa-facebook"></i>
             <i className="fa-brands fa-twitter"></i>
-            <i className="fa-brands fa-linkedin"></i>
-            <i className="fa-brands fa-youtube"></i>
+            <i className="fa-brands fa-linkedin" onClick={handleLinkedInClick}></i>
+            <i className="fa-brands fa-youtube" onClick={handleYoutubeClick}></i>
           </div>
           </Col>
         </Row>
