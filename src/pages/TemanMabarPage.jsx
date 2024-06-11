@@ -54,7 +54,7 @@ const TemanMabarPage = () => {
           </Row>
           <Row>
             {temanMabarData
-              .filter((user) => user.userPrice != 0)
+              .filter((user) => (user.userPrice != 0) && (userGameID != "") ? user.userGameID == userGameID : (user.userPrice != 0))
               .map((user) => (
                 <Col
                   key={user.userID}
