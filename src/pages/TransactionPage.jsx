@@ -24,7 +24,11 @@ const TransactionPage = () => {
   const [orders, setOrders] = useState([]);
 
   const handleOrders = async (x) => {
-    setOrders(prevData => [...prevData, x.data]);
+    // setOrders(prevData => [...prevData, x.data]);
+    x.data.forEach(data => {
+      setOrders(prevData => [...prevData, data]);
+      console.log(data);
+    });
   }
 
   const effectRan = useRef(false);
@@ -51,24 +55,23 @@ const TransactionPage = () => {
           </h1>
           <Row className="animate__animated animate__fadeInUp animate__delay-1s">
             {orders.map((order) => (
-              <Col xs={12} key={order[0].orderID} className="mb-4">
+              <Col xs={12} key={order.orderID} className="mb-4">
                 <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      {console.log(order)}
                       <img
-                        src={order[0].orderType == "Coaching" ? order[0].coaches.coachPicture : order[0].seller.userPicture}
-                        alt={order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName}
+                        src={order.orderType == "Coaching" ? order.coaches.coachPicture : order.seller.userPicture}
+                        alt={order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName}
                         className="rounded-circle"
                         width="80"
                         height="80"
                       />
                       <div className="detail ms-3 flex-grow-1">
-                        <Card.Title>{order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName} - {order[0].orderType}</Card.Title>
-                        <Card.Text>{order[0].orderPrice} <FaCoins /></Card.Text>
-                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order[0].orderPrice) / parseInt(order[0].orderType == "Coaching" ? order[0].coaches.coachPrice : order[0].seller.userPrice)}</Card.Text>
+                        <Card.Title>{order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName} - {order.orderType}</Card.Title>
+                        <Card.Text>{order.orderPrice} <FaCoins /></Card.Text>
+                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order.orderPrice) / parseInt(order.orderType == "Coaching" ? order.coaches.coachPrice : order.seller.userPrice)}</Card.Text>
                       </div>
-                      {order[0].orderStatus === 'In Progress' && (
+                      {order.orderStatus === 'In Progress' && (
                         <div className="d-flex">
                           <Button
                             variant="danger"
@@ -94,7 +97,7 @@ const TransactionPage = () => {
                         </div>
                       )}
 
-                      {(order[0].orderStatus === 'Finished' || order[0].orderStatus === 'Canceled') && (
+                      {(order.orderStatus === 'Finished' || order.orderStatus === 'Canceled') && (
                         <div className="d-flex">
                           <Button
                             variant="success"
@@ -112,14 +115,14 @@ const TransactionPage = () => {
                     <div className="d-flex justify-content-end align-items-center mt-3">
                       <Badge
                         bg={
-                          order[0].orderStatus === 'Finished'
+                          order.orderStatus === 'Finished'
                             ? 'success'
-                            : order[0].orderStatus === 'In Progress'
+                            : order.orderStatus === 'In Progress'
                               ? 'warning'
                               : 'danger'
                         }
                       >
-                        {order[0].orderStatus}
+                        {order.orderStatus}
                       </Badge>
                     </div>
                   </Card.Body>
