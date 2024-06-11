@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FaCoins } from "react-icons/fa";
 import { useLocalStorage } from "../data/useLocalStorage";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useBackend } from "../data/useBackend";
+import { Button, Modal } from "react-bootstrap";
 
 
 const TopUpPage = () => {
@@ -11,6 +12,7 @@ const TopUpPage = () => {
   const { PurchaseService } = useBackend();
   const [user, setUser] = useState({});
   const [price, setPrice] = useState(0);
+  const [modalShow, setModalShow] = React.useState(false);
 
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
@@ -18,14 +20,9 @@ const TopUpPage = () => {
 
   const handleCurrencyChange = async (event) => {
     event.preventDefault();
-    if (price == 0) {
-      alert("Please choose the product before checkout");
-    }
     await PurchaseService(user.userID, parseInt(price));
     user.userCurrency = parseInt(price) + parseInt(user.userCurrency);
     setItem(user);
-    setUser(user);
-    window.location.reload();
   }
 
   useEffect(() => {
@@ -95,14 +92,56 @@ const TopUpPage = () => {
             </div>
           </div>
           <div className="topup-submit">
-            <button type="submit" className="btn btn-danger btn-lg rounded-1">
+            <button className="btn btn-danger btn-lg rounded-1" type="submit"
+              onClick={() => {
+                if (price == 0) {
+                  alert("Please choose the product before checkout");
+                  return;
+                }
+                setModalShow(true);
+              }}>
               <b>Top Up</b>
             </button>
           </div>
         </form>
       </div>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => {
+          setModalShow(false);
+          window.location.reload();
+        }}
+      />
     </>
   );
 };
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Information
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Top-Up Success</h4>
+        <p>
+          Please immediately check your currency and contact our customer service if the currency did not change
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="success"
+          // eslint-disable-next-line react/prop-types
+          size="m" onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 export default TopUpPage;

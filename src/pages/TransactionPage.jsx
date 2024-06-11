@@ -11,7 +11,7 @@ const TransactionPage = () => {
   let navigate = useNavigate();
   const [transactionList, setTransactionList] = useState(transactions);
 
-  const { GetCoachOrderByUserID, GetUserOrderByUserID } = useBackend();
+  const { GetCoachOrderByUserID, GetUserOrderByUserID, PurchaseService, UpdateUserOrderStatus, UpdateCoachOrderStatus } = useBackend();
   const { getItem } = useLocalStorage("User");
 
   const handleStatusChange = (id, newStatus) => {
@@ -24,7 +24,9 @@ const TransactionPage = () => {
   const [orders, setOrders] = useState([]);
 
   const handleOrders = async (x) => {
-    setOrders(prevData => [...prevData, x.data]);
+    x.data.forEach(data => {
+      setOrders(prevData => [...prevData, data]);
+    });
   }
 
   const effectRan = useRef(false);
@@ -50,76 +52,97 @@ const TransactionPage = () => {
             Transaction & History
           </h1>
           <Row className="animate__animated animate__fadeInUp animate__delay-1s">
-            {orders.map((order) => (
-              <Col xs={12} key={order[0].orderID} className="mb-4">
+            {orders.filter(x => x.orderStatus == "In Progress").map((order) => (
+              <Col xs={12} key={order.orderID} className="mb-4">
                 <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
                     <div className="d-flex align-items-center">
-                      {console.log(order)}
                       <img
-                        src={order[0].orderType == "Coaching" ? order[0].coaches.coachPicture : order[0].seller.userPicture}
-                        alt={order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName}
+                        src={order.orderType == "Coaching" ? order.coaches.coachPicture : order.seller.userPicture}
+                        alt={order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName}
                         className="rounded-circle"
                         width="80"
                         height="80"
                       />
                       <div className="detail ms-3 flex-grow-1">
-                        <Card.Title>{order[0].orderType == "Coaching" ? order[0].coaches.coachName : order[0].seller.userName} - {order[0].orderType}</Card.Title>
-                        <Card.Text>{order[0].orderPrice} <FaCoins /></Card.Text>
-                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order[0].orderPrice) / parseInt(order[0].orderType == "Coaching" ? order[0].coaches.coachPrice : order[0].seller.userPrice)}</Card.Text>
+                        <Card.Title>{order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName} - {order.orderType}</Card.Title>
+                        <Card.Text>{order.orderPrice} <FaCoins /></Card.Text>
+                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order.orderPrice) / parseInt(order.orderType == "Coaching" ? order.coaches.coachPrice : order.seller.userPrice)}</Card.Text>
                       </div>
-                      {order[0].orderStatus === 'In Progress' && (
-                        <div className="d-flex">
-                          <Button
-                            variant="danger"
-                            size="sm"
-                            className="me-2"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleStatusChange(order.id, 'Canceled');
-                            }}
-                          >
-                            Cancel
-                          </Button>
-                          <Button
-                            variant="success"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleStatusChange(order.id, 'Done');
-                            }}
-                          >
-                            Done
-                          </Button>
-                        </div>
-                      )}
+                      <div className="d-flex">
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          className="me-2"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleStatusChange(order.id, 'Cancelled');
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="success"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleStatusChange(order.id, 'Done');
+                          }}
+                        >
+                          Done
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-end align-items-center mt-3">
+                      <Badge
+                        bg={'warning'}
+                      >
+                        {order.orderStatus}
+                      </Badge>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+            {orders.filter(x => x.orderStatus == "Finished" || x.orderStatus == "Cancelled").map((order) => (
+              <Col xs={12} key={order.orderID} className="mb-4">
+                <Card className="h-100" onClick={() => navigate("/transaction")}>
+                  <Card.Body>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src={order.orderType == "Coaching" ? order.coaches.coachPicture : order.seller.userPicture}
+                        alt={order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName}
+                        className="rounded-circle"
+                        width="80"
+                        height="80"
+                      />
+                      <div className="detail ms-3 flex-grow-1">
+                        <Card.Title>{order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName} - {order.orderType}</Card.Title>
+                        <Card.Text>{order.orderPrice} <FaCoins /></Card.Text>
+                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order.orderPrice) / parseInt(order.orderType == "Coaching" ? order.coaches.coachPrice : order.seller.userPrice)}</Card.Text>
+                      </div>
+                      <div className="d-flex">
+                        <Button
+                          variant="success"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate("/detail/" + (order.orderType == "Coaching" ? "coach" : "temanMabar") + "/" + order.sellerID)
+                          }}
+                        >
+                          Re-Order
+                        </Button>
+                      </div>
 
-                      {(order[0].orderStatus === 'Finished' || order[0].orderStatus === 'Canceled') && (
-                        <div className="d-flex">
-                          <Button
-                            variant="success"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleStatusChange(order.id, 'Done');
-                            }}
-                          >
-                            Re-Order
-                          </Button>
-                        </div>
-                      )}
                     </div>
                     <div className="d-flex justify-content-end align-items-center mt-3">
                       <Badge
                         bg={
-                          order[0].orderStatus === 'Finished'
-                            ? 'success'
-                            : order[0].orderStatus === 'In Progress'
-                              ? 'warning'
-                              : 'danger'
+                          order.orderStatus === 'Finished'
+                            ? 'success' : 'danger'
                         }
                       >
-                        {order[0].orderStatus}
+                        {order.orderStatus}
                       </Badge>
                     </div>
                   </Card.Body>
