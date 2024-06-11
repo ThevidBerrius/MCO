@@ -11,7 +11,7 @@ const TransactionPage = () => {
   let navigate = useNavigate();
   const [transactionList, setTransactionList] = useState(transactions);
 
-  const { GetCoachOrderByUserID, GetUserOrderByUserID } = useBackend();
+  const { GetCoachOrderByUserID, GetUserOrderByUserID, PurchaseService, UpdateUserOrderStatus, UpdateCoachOrderStatus } = useBackend();
   const { getItem } = useLocalStorage("User");
 
   const handleStatusChange = (id, newStatus) => {
@@ -24,10 +24,8 @@ const TransactionPage = () => {
   const [orders, setOrders] = useState([]);
 
   const handleOrders = async (x) => {
-    // setOrders(prevData => [...prevData, x.data]);
     x.data.forEach(data => {
       setOrders(prevData => [...prevData, data]);
-      console.log(data);
     });
   }
 
@@ -54,7 +52,7 @@ const TransactionPage = () => {
             Transaction & History
           </h1>
           <Row className="animate__animated animate__fadeInUp animate__delay-1s">
-            {orders.map((order) => (
+            {orders.filter(x => x.orderStatus == "In Progress").map((order) => (
               <Col xs={12} key={order.orderID} className="mb-4">
                 <Card className="h-100" onClick={() => navigate("/transaction")}>
                   <Card.Body>
@@ -71,55 +69,77 @@ const TransactionPage = () => {
                         <Card.Text>{order.orderPrice} <FaCoins /></Card.Text>
                         <Card.Text className='quantity-text'>Quantity:  {parseInt(order.orderPrice) / parseInt(order.orderType == "Coaching" ? order.coaches.coachPrice : order.seller.userPrice)}</Card.Text>
                       </div>
-                      {order.orderStatus === 'In Progress' && (
-                        <div className="d-flex">
-                          <Button
-                            variant="danger"
-                            size="sm"
-                            className="me-2"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleStatusChange(order.id, 'Canceled');
-                            }}
-                          >
-                            Cancel
-                          </Button>
-                          <Button
-                            variant="success"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleStatusChange(order.id, 'Done');
-                            }}
-                          >
-                            Done
-                          </Button>
-                        </div>
-                      )}
+                      <div className="d-flex">
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          className="me-2"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleStatusChange(order.id, 'Cancelled');
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="success"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleStatusChange(order.id, 'Done');
+                          }}
+                        >
+                          Done
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-end align-items-center mt-3">
+                      <Badge
+                        bg={'warning'}
+                      >
+                        {order.orderStatus}
+                      </Badge>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+            {orders.filter(x => x.orderStatus == "Finished" || x.orderStatus == "Cancelled").map((order) => (
+              <Col xs={12} key={order.orderID} className="mb-4">
+                <Card className="h-100" onClick={() => navigate("/transaction")}>
+                  <Card.Body>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src={order.orderType == "Coaching" ? order.coaches.coachPicture : order.seller.userPicture}
+                        alt={order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName}
+                        className="rounded-circle"
+                        width="80"
+                        height="80"
+                      />
+                      <div className="detail ms-3 flex-grow-1">
+                        <Card.Title>{order.orderType == "Coaching" ? order.coaches.coachName : order.seller.userName} - {order.orderType}</Card.Title>
+                        <Card.Text>{order.orderPrice} <FaCoins /></Card.Text>
+                        <Card.Text className='quantity-text'>Quantity:  {parseInt(order.orderPrice) / parseInt(order.orderType == "Coaching" ? order.coaches.coachPrice : order.seller.userPrice)}</Card.Text>
+                      </div>
+                      <div className="d-flex">
+                        <Button
+                          variant="success"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate("/detail/" + (order.orderType == "Coaching" ? "coach" : "temanMabar") + "/" + order.sellerID)
+                          }}
+                        >
+                          Re-Order
+                        </Button>
+                      </div>
 
-                      {(order.orderStatus === 'Finished' || order.orderStatus === 'Canceled') && (
-                        <div className="d-flex">
-                          <Button
-                            variant="success"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleStatusChange(order.id, 'Done');
-                            }}
-                          >
-                            Re-Order
-                          </Button>
-                        </div>
-                      )}
                     </div>
                     <div className="d-flex justify-content-end align-items-center mt-3">
                       <Badge
                         bg={
                           order.orderStatus === 'Finished'
-                            ? 'success'
-                            : order.orderStatus === 'In Progress'
-                              ? 'warning'
-                              : 'danger'
+                            ? 'success' : 'danger'
                         }
                       >
                         {order.orderStatus}
