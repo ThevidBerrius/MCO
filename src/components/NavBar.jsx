@@ -62,6 +62,7 @@ const NavBar = () => {
                       navigate("/");
                     }}>Log Out</Dropdown.Item>
                     <Dropdown.Item className='dropdown-menu-small' onClick={() => navigate("/topup")}>Top Up</Dropdown.Item>
+                    <Dropdown.Item className='dropdown-menu-small' onClick={() => navigate("/transaction")}>Transactions</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>

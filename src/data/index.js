@@ -30,16 +30,11 @@ export const navLinks = [
   },
   {
     id: 4,
-    path: "transaction",
-    text: "Transactions",
-  },
-  {
-    id: 5,
     path: "event",
     text: "Event",
   },
   {
-    id: 6,
+    id: 5,
     path: "syaratketen",
     text: "Syarat & Ketentuan",
   },
@@ -599,7 +594,7 @@ export const commentsData = [
     star5: "fa-solid fa-star",
     name: "John Doe",
     text: "This is a great post!",
-    date: "2024-06-08", 
+    date: "2024-06-08",
   },
   {
     id: 2,
@@ -611,7 +606,7 @@ export const commentsData = [
     star5: "fa-regular fa-star",
     name: "Jane Smith",
     text: "Thanks for sharing this information.",
-    date: "2024-06-08", 
+    date: "2024-06-08",
   },
   {
     id: 3,
@@ -623,6 +618,6 @@ export const commentsData = [
     star5: "fa-solid fa-star",
     name: "Alice Johnson",
     text: "I found this very helpful, thank you!",
-    date: "2024-06-08", 
+    date: "2024-06-08",
   },
 ];
