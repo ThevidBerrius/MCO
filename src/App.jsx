@@ -18,11 +18,16 @@ import TopUpPage from './pages/TopUpPage'
 import EventDetailPage from './pages/EventDetailPage'
 import TransactionPage from './pages/TransactionPage'
 import ProfilePage from './pages/ProfilePage'
-// import { useLocalStorage } from './data/useLocalStorage'
+import { useLocalStorage } from './data/useLocalStorage'
 
 export default function App() {
-  // const { initializeItem } = useLocalStorage("User");
-  // initializeItem();
+  const { initializeItem, getItem } = useLocalStorage("User");
+  try {
+    getItem().userName;
+  }
+  catch {
+    initializeItem();
+  }
   return (
     <div>
       <NavBar />
