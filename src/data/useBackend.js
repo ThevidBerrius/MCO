@@ -48,8 +48,15 @@ export const useBackend = () => {
     }
 
     async function UpdateCoachOrderStatus(orderID, update) {
-        const res = await axios.put('https://localhost:7150/coachOrders/updateStatus/' + orderID + {
+        const res = await axios.put('https://localhost:7150/coachOrders/updateStatus/' + orderID, {
             update: update
+        });
+        return res;
+    }
+
+    async function UpdateCoachOrderRating(orderID, rating) {
+        const res = await axios.put('https://localhost:7150/coachOrders/updateRating/' + orderID, {
+            rating: rating
         });
         return res;
     }
@@ -147,6 +154,13 @@ export const useBackend = () => {
         return res;
     }
 
+    async function UpdateUserOrderRating(orderID, rating) {
+        const res = await axios.put('https://localhost:7150/userOrders/updateRating/' + orderID, {
+            rating: rating
+        });
+        return res;
+    }
+
     async function InsertUserOrder(customerID, sellerID, orderType, orderStatus, orderPrice) {
         const res = await axios.post('https://localhost:7150/userOrders/insertOrder', {
             customerID: customerID,
@@ -200,8 +214,9 @@ export const useBackend = () => {
         return res;
     }
 
-    async function UpdateUser(userName, userPassword, userDescription, userPicture, userIsPlayer, userPrice, userGameID) {
+    async function UpdateUser(userID, userName, userPassword, userDescription, userPicture, userIsPlayer, userPrice, userGameID) {
         const res = await axios.post('https://localhost:7150/users/updateUser', {
+            userID: userID,
             userName: userName,
             userPassword: userPassword,
             userDescription: userDescription,
@@ -246,8 +261,8 @@ export const useBackend = () => {
     // https://localhost:7150/
 
     return {
-        GetAllCoaches, GetSampleCoaches, GetCoachByGameID, GetCoachDetail, InsertCoach, GetCoachOrderByUserID, GetCoachOrderByCoachID, UpdateCoachOrderStatus, InsertCoachOrder,
-        GetCommentsByID, GetSampleComments, InsertComment, GetAllEvents, GetSampleEvent, GetEventByEventID, GetEventByGame, InsertEvent, GetAllGames, GetGamesByID, GetUserOrderByUserID, UpdateUserOrderStatus, InsertUserOrder,
-        GetAllUsers, GetSampleUsers, GetUserByGameID, GetUserDetail, UserLogin, InsertUser, UpdateUser, GetAllWallets, GetWalletByOwnerID, PurchaseService, InsertWallet
+        GetAllCoaches, GetSampleCoaches, GetCoachByGameID, GetCoachDetail, InsertCoach, GetCoachOrderByUserID, GetCoachOrderByCoachID, UpdateCoachOrderStatus, UpdateCoachOrderRating, InsertCoachOrder,
+        GetCommentsByID, GetSampleComments, InsertComment, GetAllEvents, GetSampleEvent, GetEventByEventID, GetEventByGame, InsertEvent, GetAllGames, GetGamesByID, GetUserOrderByUserID, UpdateUserOrderStatus,
+        UpdateUserOrderRating, InsertUserOrder, GetAllUsers, GetSampleUsers, GetUserByGameID, GetUserDetail, UserLogin, InsertUser, UpdateUser, GetAllWallets, GetWalletByOwnerID, PurchaseService, InsertWallet
     }
 }
