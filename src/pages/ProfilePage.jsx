@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
 import { FaUser, FaLock, FaCheck, FaDollarSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,8 @@ import { useLocalStorage } from "../data/useLocalStorage";
 
 const EditProfilePage = () => {
   const navigate = useNavigate();
-  const { GetUserDetail, UpdateUser, GetAllGames, GetGamesByID } = useBackend();
-  const { getItem } = useLocalStorage("User");
+  const { UpdateUser, GetAllGames } = useBackend();
+  const { getItem, initializeItem, clearStorage } = useLocalStorage("User");
 
   const [userData, setUserData] = useState("");
   const [games, setGames] = useState([]);
@@ -22,9 +22,6 @@ const EditProfilePage = () => {
   const [description, setDescription] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
-  const [gameName, setGameName] = useState("");
-
-  let temp = getItem();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -56,11 +53,12 @@ const EditProfilePage = () => {
     setImagePreview(url);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    // console.log(imagePreview, username, password, confirmPass, isTemanMabar, price, userGameID, description)
 
-    if (username.trim() === "" || password.trim() === "" || confirmPass.trim() === "" || description.trim() === "") {
-      alert("Please fill in all fields.");
+    if (username == "" && password == "" && confirmPass == "" && description == "") {
+      alert("Please fill in field to update.");
       return;
     }
 
@@ -69,26 +67,32 @@ const EditProfilePage = () => {
       return;
     }
 
+    if (isTemanMabar == true && price == 0) {
+      alert("Price must be filled");
+      return;
+    }
+    await UpdateUser(
+      userData.userID, username == '' ? userData.userName : username,
+      password == '' ? userData.userPassword : password,
+      description == '' ? userData.userDescription : description,
+      imagePreview == '' ? userData.userPicture : imagePreview,
+      isTemanMabar ? true : false, price == 0 ? 0 : price,
+      userGameID == '' ? userData.userGameID : userGameID)
+
     alert("Profile updated successfully!");
-    navigate("/profile"); // Redirect to profile page after successful update
+    clearStorage();
+    initializeItem();
+    navigate("/");
   };
 
   useEffect(() => {
-    setUserData(temp);
+    setUserData(getItem());
     GetAllGames().then(x => setGames(x.data));
-    setProfileImage(userData.userPicture);
-    setUsername(userData.userName);
-    setPassword(userData.userPassword);
-    setIsTemanMabar(userData.userIsPlayer);
-    if (userData.userIsPlayer) {
-      setPrice(userData.userPrice);
-    }
-    setDescription(userData.userDescription);
   }, [])
 
 
   return (
-    (userData.userDescription) && <>
+    (userData) && <>
       {/* {console.log(userData)} */}
       <Container className="profile-page min-vh-100 ">
         <Row className="profile justify-content-center animate__animated animate__fadeInUp animate__delay-1s">
@@ -99,14 +103,14 @@ const EditProfilePage = () => {
               {/* Profile Image */}
               <Form.Group className="mb-3 text-center position-relative">
                 <Image
-                  src={imagePreview || profileImage || userData.userPicture || "https://via.placeholder.com/150"}
+                  src={imagePreview || profileImage || "https://via.placeholder.com/150"}
                   roundedCircle
                   className="profile-image-preview"
                 />
                 <Form.Control
                   type="text"
                   placeholder="Enter Image URL"
-                  value={profileImage || userData.userPicture}
+                  value={profileImage}
                   onChange={handleProfileImageChange}
                   className="mt-3"
                 />
@@ -117,9 +121,9 @@ const EditProfilePage = () => {
                 <Form.Control
                   type="text"
                   placeholder="Username"
-                  value={username || userData.userName}
+                  value={username}
+                  defaultValue={username}
                   onChange={handleUsernameChange}
-                  required
                 />
                 <FaUser className="form-icon" />
               </Form.Group>
@@ -129,7 +133,7 @@ const EditProfilePage = () => {
                 <Form.Control
                   type="password"
                   placeholder="New Password"
-                  value={password || userData.userPassword}
+                  value={password}
                   onChange={handlePasswordChange}
                 />
                 <FaLock className="form-icon" />
@@ -140,7 +144,7 @@ const EditProfilePage = () => {
                 <Form.Control
                   type="password"
                   placeholder="Confirm New Password"
-                  value={confirmPass || ''}
+                  value={confirmPass}
                   onChange={handleConfirmPassChange}
                 />
                 <FaCheck className="form-icon" />
@@ -152,7 +156,7 @@ const EditProfilePage = () => {
                   type="checkbox"
                   id="teman-mabar"
                   label="Join as Teman Mabar?"
-                  checked={isTemanMabar || userData.userIsPlayer}
+                  checked={isTemanMabar}
                   onChange={() => setIsTemanMabar(!isTemanMabar)}
                 />
               </Form.Group>
@@ -174,9 +178,8 @@ const EditProfilePage = () => {
               <Form.Group className="mb-3 position-relative">
                 <Form.Select
                   aria-label="Select Game"
-                  value={userGameID}
+                  // value={userGameID}
                   onChange={handleGameDropdownChange}
-                  required
                   defaultValue={userData.userGameID}
                 >
                   <option>{games.filter(x => x.gameID == userData.userGameID).map((game) => {
@@ -198,7 +201,7 @@ const EditProfilePage = () => {
                 <Form.Control
                   as="textarea"
                   placeholder="Write something about yourself..."
-                  value={description || userData.userDescription}
+                  value={description}
                   onChange={handleDescriptionChange}
                   rows={4}
                 />
